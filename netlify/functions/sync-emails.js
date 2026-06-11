@@ -311,11 +311,12 @@ exports.handler = async () => {
       'application received OR application submitted OR thank you for applying OR thanks for applying OR thank you for your interest OR your application OR your recent job application OR job application for OR move forward OR not selected OR interview OR phone screen OR phone screening OR brief phone screening OR screening call OR candidacy OR offer OR "job offer" OR "offer of employment" OR onboarding OR "welcome to the team" OR "you have been hired" OR schedule OR "next steps" OR "phone call" OR "video interview" OR "hiring manager" OR recruiter OR "start date"';
 
     const searchUrl =
-      `https://graph.microsoft.com/v1.0/me/messages?$search="${encodeURIComponent(query)}"` +
-      `&$top=100&$select=${select
-      const recentUrl =
-  `https://graph.microsoft.com/v1.0/me/messages?$top=200&$orderby=receivedDateTime desc&$select=${select}`;                   
+  `https://graph.microsoft.com/v1.0/me/messages?$search="${encodeURIComponent(query)}"` +
+  `&$top=100&$select=${select}`;
 
+const recentUrl =
+  `https://graph.microsoft.com/v1.0/me/messages?$top=200&$orderby=receivedDateTime desc&$select=${select}`;
+    
     let linkedInMessages = [];
 let searchMessages = [];
 let recentMessages = [];
