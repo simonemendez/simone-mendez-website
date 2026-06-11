@@ -440,7 +440,7 @@
               <th>Position</th>
               <th>Date Applied</th>
               <th>Status</th>
-              <th>Notes</th>
+      
             </tr>
           </thead>
           <tbody id="tableBody"></tbody>
@@ -603,7 +603,7 @@
           <td>${escapeHTML(app.position)}</td>
           <td>${formatDate(app.dateApplied)}</td>
           <td><span class="status-badge status-${status}">${statusLabel}</span></td>
-          <td>${escapeHTML(app.notes || "—")}</td>
+          
         `;
         tbody.appendChild(row);
       });
@@ -697,7 +697,11 @@
       renderTable();
     }
 
-    window.addEventListener("load", init);
+    window.addEventListener("load", () => {
+  init();
+  const syncBtn = document.getElementById("syncBtn");
+  syncFromOutlook(syncBtn);
+});
   </script>
 </body>
 </html>
