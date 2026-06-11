@@ -18,11 +18,12 @@ const JOB_SIGNALS = [
   "your application for", "your application to", "your application has been",
   "application has been received", "moving forward", "not moving forward",
   "not selected", "your candidacy", "candidate", "for the position",
-  "for this position", "interview",
+  "for this position", "interview", "phone screen", "phone screening",
+  "schedule", "recruiter", "hiring manager", "next steps",
   // Offer / hire language so accepted-offer emails are recognized as applications.
   "offer", "job offer", "offer of employment", "pleased to offer", "offer letter",
   "you have been hired", "you're hired", "welcome aboard", "welcome to the team",
-  "onboarding"
+  "onboarding", "start date"
 ];
 
 // Things that look like job emails to a broad search but are not (e.g. a gym
@@ -31,7 +32,7 @@ const NOISE_SIGNALS = [
   "membership", "planet fitness", "gym", "subscription", "newsletter",
   "verify your email", "confirm your email", "password reset", "reset your password",
   "order confirmation", "your order", "your receipt", "invoice", "free trial",
-  "webinar", "promo", "% off", "sale ends"
+  "webinar", "promo", "% off", "sale ends", "unsubscribe", "preferences"
 ];
 
 // Phrases that a pattern can capture but that are clearly NOT a company name —
@@ -108,7 +109,11 @@ function extractCompany(subject, preview) {
     // Offer / hire confirmations name the employer too.
     /offer (?:you )?(?:the\s+)?(?:position|role|job)[^\n\r]*?\b(?:at|with)\s+([^\n\r]+)/i,
     /welcome to\s+(?:the\s+)?(.+?)\s+(?:team|family)\b/i,
-    /(?:join|joining)\s+(?:the\s+)?(.+?)\s+(?:team|family)\b/i
+    /(?:join|joining)\s+(?:the\s+)?(.+?)\s+(?:team|family)\b/i,
+    // Interview scheduling
+    /interview (?:with|at)\s+([^\n\r]+)/i,
+    /phone (?:screen|interview) (?:with|at)\s+([^\n\r]+)/i,
+    /from:\s+([^\n\r]+)/i
   ];
 
   for (const pattern of patterns) {
@@ -185,7 +190,9 @@ function extractPosition(subject, preview, isLinkedIn, company) {
     /(?:position|role|job title)\s*[:\-]\s*(.+)/i,
     // Offer / hire wording: "offer you the position of X at ..." / "position of X"
     /offer you (?:the\s+)?(?:position|role)\s+of\s+(.+?)\s+(?:at|with|\.)/i,
-    /position of\s+(.+?)\s+(?:at|with)\b/i
+    /position of\s+(.+?)\s+(?:at|with)\b/i,
+    // Interview language
+    /(?:phone\s+)?(?:screen|interview) (?:for|re)?(?::\s+)?(.+)/i
   ];
   for (const pattern of patterns) {
     for (const src of sources) {
@@ -211,20 +218,23 @@ function deriveStatus(subject, preview) {
 
   // Rejections first — "we extended an offer to another candidate" is still a
   // rejection, so this must win over the offer check below.
-  if (/\b(not selected|unfortunately|not moving forward|other candidates?|another candidate|regret to inform|decided not to|will not be moving|pursue other|moved? forward with (?:other|another))\b/.test(text)) {
+  if (/\b(not selected|unfortunately|not moving forward|other candidates?|another candidate|regret to inform|decided not to|will not be moving|pursue other|moved? forward with (?:other|another)|no longer|reject|declined|withdrawn)\b/.test(text)) {
     return "Rejected";
   }
 
   // Offers / hires. The email has already passed the job-application filter, so a
   // mention of an offer here reliably means a real job offer.
-  if (/\b(pleased to offer|happy to offer|glad to offer|excited to offer|we would like to offer|offer of employment|job offer|offer letter|formal offer|extend(?:ing|ed)? (?:you )?(?:an|the)? ?offer|you have been hired|you're hired|welcome aboard|welcome to the team|onboarding)\b/.test(text) ||
+  if (/\b(pleased to offer|happy to offer|glad to offer|excited to offer|we would like to offer|offer of employment|job offer|offer letter|formal offer|extend(?:ing|ed)? (?:you )?(?:an|the)? ?offer|you have been hired|you're hired|welcome aboard|welcome to the team|onboarding|start date|joining us|pleased to announce|excited to welcome|congrats|congratulations)\b/.test(text) ||
       /\boffer\b/.test(text)) {
     return "Offer";
   }
 
-  if (/\binterview\b|schedule (?:an?|the) (?:call|interview|time)|set up (?:an?|the) (?:call|interview)/.test(text)) {
+  // Interviews and phone screens
+  if (/\b(phone\s+screen(?:ing)?|phone\s+call|phone\s+interview|video\s+interview|virtual\s+interview|interview|schedule|interview scheduled|interview on|interview at|next (?:round|step)|screening|call with|time slot|calendar|zoom|teams|meet)\b/.test(text) &&
+      !/\b(phone\s+number|phone\s+me|call\s+me|contact|email)\b/.test(text)) {
     return "Interview";
   }
+
   return "Applied";
 }
 
@@ -296,15 +306,16 @@ exports.handler = async () => {
       `&$top=100&$select=${select}`;
 
     // 2) Pull other job-application emails (ATS / company replies) by keyword.
-    const query = 'application received OR thank you for applying OR your application OR move forward OR not selected OR interview OR candidacy OR offer OR "job offer" OR "offer of employment" OR onboarding OR "welcome to the team" OR "you have been hired"';
+    // Enhanced query to catch interviews, phone screens, and offers
+    const query = 'application received OR thank you for applying OR your application OR move forward OR not selected OR interview OR phone screen OR phone screening OR candidacy OR offer OR "job offer" OR "offer of employment" OR onboarding OR "welcome to the team" OR "you have been hired" OR "schedule" OR "next steps" OR "phone call" OR "video interview" OR "hiring manager" OR "recruiter" OR "start date"';
     const searchUrl =
       `https://graph.microsoft.com/v1.0/me/messages?$search="${encodeURIComponent(query)}"` +
       `&$top=100&$select=${select}`;
 
     let linkedInMessages = [];
     let searchMessages = [];
-    try { linkedInMessages = await fetchAllMessages(linkedInUrl, accessToken, 2000); } catch (_) { /* keep going */ }
-    try { searchMessages = await fetchAllMessages(searchUrl, accessToken, 500); } catch (_) { /* keep going */ }
+    try { linkedInMessages = await fetchAllMessages(linkedInUrl, accessToken, 2000); } catch (e) { console.error("LinkedIn fetch error:", e); }
+    try { searchMessages = await fetchAllMessages(searchUrl, accessToken, 500); } catch (e) { console.error("Search fetch error:", e); }
 
     if (linkedInMessages.length === 0 && searchMessages.length === 0) {
       return { statusCode: 400, body: JSON.stringify({ error: "Mail fetch failed" }) };
@@ -318,6 +329,7 @@ exports.handler = async () => {
     }
 
     const applications = [];
+    const debugLog = [];
 
     for (const email of byId.values()) {
       const subject = email.subject || "";
@@ -338,7 +350,15 @@ exports.handler = async () => {
         // Drop anything that isn't clearly a job-application email.
         const isNoise = NOISE_SIGNALS.some(sig => haystack.includes(sig));
         const isJob = JOB_SIGNALS.some(sig => haystack.includes(sig));
-        if (isNoise || !isJob) continue;
+        if (isNoise || !isJob) {
+          debugLog.push({
+            subject: subject.substring(0, 50),
+            sender,
+            filtered_out: true,
+            reason: isNoise ? "noise" : "not_job_signal"
+          });
+          continue;
+        }
       }
 
       // Figure out the employer name from the email content first.
@@ -355,7 +375,15 @@ exports.handler = async () => {
       }
 
       // If we still cannot identify a real company, skip rather than show junk.
-      if (!company) continue;
+      if (!company) {
+        debugLog.push({
+          subject: subject.substring(0, 50),
+          sender,
+          filtered_out: true,
+          reason: "no_company_found"
+        });
+        continue;
+      }
 
       const status = deriveStatus(subject, preview);
       const position = extractPosition(subject, preview, isLinkedIn, company) || "—";
@@ -368,6 +396,15 @@ exports.handler = async () => {
         status,
         notes: preview.substring(0, 100)
       });
+
+      debugLog.push({
+        company,
+        position: position.substring(0, 30),
+        status,
+        subject: subject.substring(0, 50),
+        sender,
+        date
+      });
     }
 
     // Newest applications first.
@@ -379,10 +416,20 @@ exports.handler = async () => {
         "Content-Type": "application/json",
         "Access-Control-Allow-Origin": "*"
       },
-      body: JSON.stringify({ applications, count: applications.length })
+      body: JSON.stringify({ 
+        applications, 
+        count: applications.length,
+        debug: {
+          linkedInCount: linkedInMessages.length,
+          searchCount: searchMessages.length,
+          deduplicatedCount: byId.size,
+          applicationCount: applications.length,
+          log: debugLog.slice(0, 20)  // First 20 for preview
+        }
+      })
     };
 
   } catch (err) {
-    return { statusCode: 500, body: JSON.stringify({ error: err.message }) };
+    return { statusCode: 500, body: JSON.stringify({ error: err.message, stack: err.stack }) };
   }
 };
