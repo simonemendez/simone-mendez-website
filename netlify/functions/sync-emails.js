@@ -24,10 +24,7 @@ exports.handler = async () => {
 
     const accessToken = tokenData.access_token;
 
-   const query = 'application received OR thank you for applying OR your application OR move forward OR not selected OR interview OR candidacy OR greenhouse OR lever OR workday OR ashby';
-const url = `https://graph.microsoft.com/v1.0/me/messages?$search="${encodeURIComponent(query)}"&$top=50&$select=subject,from,receivedDateTime,bodyPreview`;
-    const mailRes = await fetch(url, {
-      headers: { Authorization: `Bearer ${accessToken}` }
+const query = 'application received OR thank you for applying OR your application OR move forward OR not selected OR interview OR candidacy OR greenhouse OR lever OR workday OR ashby OR your application was sent to OR application was sent';const url = `https://graph.microsoft.com/v1.0/me/messages?$search="${encodeURIComponent(query)}"&$top=100&$select=subject,from,receivedDateTime,bodyPreview`;
     });
 
     const mailData = await mailRes.json();
