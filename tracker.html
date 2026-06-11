@@ -699,8 +699,17 @@
 
     window.addEventListener("load", () => {
   init();
-  const syncBtn = document.getElementById("syncBtn");
-  syncFromOutlook(syncBtn);
+
+  // Only auto-sync once per day, not on every page load
+  const lastSync = localStorage.getItem("lastSyncDate");
+  const now = new Date();
+  const lastSyncDate = lastSync ? new Date(lastSync) : null;
+  const hoursSinceSync = lastSyncDate ? (now - lastSyncDate) / (1000 * 60 * 60) : 999;
+
+  if (hoursSinceSync > 0.5) {
+    const syncBtn = document.getElementById("syncBtn");
+    syncFromOutlook(syncBtn);
+  }
 });
   </script>
 </body>
