@@ -1,0 +1,1321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Simone Mendez | Project Manager, Software Engineer & Paralegal</title>
+
+  <meta
+    name="description"
+    content="Simone Mendez is a Project Manager, Software Engineer, and Paralegal with 10+ years of experience, active U.S. Secret Clearance, PMP, CSM, Salesforce, Gainsight, Oracle Cloud, Jira, and Power BI expertise."
+  />
+
+  <meta
+    name="keywords"
+    content="Simone Mendez, Project Manager, Software Engineer, Paralegal, PMP, CSM, Salesforce Administrator, Salesforce AI Specialist, Gainsight, Oracle Cloud, Jira, Power BI, Customer Success, Program Manager, Secret Clearance"
+  />
+
+  <meta name="author" content="Simone Mendez" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Simone Mendez | Project Manager, Software Engineer & Paralegal" />
+  <meta
+    property="og:description"
+    content="Portfolio of Simone Mendez — Project Manager, Software Engineer, and Paralegal with 10+ years of experience, active U.S. Secret Clearance, and enterprise technology delivery expertise."
+  />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://your-domain.com/" />
+  <meta property="og:image" content="https://your-domain.com/assets/og-image.png" />
+  <meta property="og:site_name" content="Simone Mendez Portfolio" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Simone Mendez | Project Manager, Software Engineer & Paralegal" />
+  <meta
+    name="twitter:description"
+    content="Dark futuristic portfolio for Simone Mendez — Project Manager, Software Engineer, and Paralegal with enterprise SaaS, CRM, customer success, and operations expertise."
+  />
+  <meta name="twitter:image" content="https://your-domain.com/assets/og-image.png" />
+
+  <!-- Favicon -->
+  <link rel="icon" href="assets/favicon.ico" />
+
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <style>
+    :root {
+      --bg: #050816;
+      --bg-2: #080d1f;
+      --panel: rgba(12, 18, 38, 0.78);
+      --panel-2: rgba(17, 25, 52, 0.86);
+      --text: #eef4ff;
+      --muted: #9aa9c7;
+      --muted-2: #6f7e9d;
+      --cyan: #22d3ee;
+      --blue: #3b82f6;
+      --violet: #8b5cf6;
+      --pink: #ec4899;
+      --green: #22c55e;
+      --amber: #f59e0b;
+      --danger: #ef4444;
+      --border: rgba(148, 163, 184, 0.18);
+      --border-2: rgba(34, 211, 238, 0.25);
+      --shadow: 0 30px 100px rgba(0, 0, 0, 0.42);
+      --glow-cyan: 0 0 40px rgba(34, 211, 238, 0.22);
+      --glow-violet: 0 0 50px rgba(139, 92, 246, 0.2);
+      --radius-xl: 28px;
+      --radius-lg: 22px;
+      --radius-md: 16px;
+      --max-width: 1240px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(34, 211, 238, 0.16), transparent 32%),
+        radial-gradient(circle at top right, rgba(139, 92, 246, 0.18), transparent 34%),
+        radial-gradient(circle at 50% 80%, rgba(59, 130, 246, 0.12), transparent 35%),
+        linear-gradient(135deg, #030712 0%, #050816 45%, #070b19 100%);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+      background-size: 44px 44px;
+      mask-image: radial-gradient(circle at center, black, transparent 78%);
+      opacity: 0.38;
+      z-index: 0;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(
+          120deg,
+          transparent 0%,
+          rgba(34, 211, 238, 0.04) 35%,
+          transparent 70%
+        );
+      z-index: 0;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page-shell {
+      position: relative;
+      z-index: 1;
+      min-height: 100vh;
+      overflow: hidden;
+    }
+
+    .orb {
+      position: absolute;
+      border-radius: 999px;
+      filter: blur(6px);
+      opacity: 0.6;
+      pointer-events: none;
+      animation: floatOrb 9s ease-in-out infinite;
+    }
+
+    .orb.one {
+      width: 260px;
+      height: 260px;
+      top: 15%;
+      left: -120px;
+      background: radial-gradient(circle, rgba(34, 211, 238, 0.25), transparent 68%);
+    }
+
+    .orb.two {
+      width: 320px;
+      height: 320px;
+      right: -140px;
+      bottom: 8%;
+      background: radial-gradient(circle, rgba(139, 92, 246, 0.24), transparent 70%);
+      animation-delay: 1.5s;
+    }
+
+    .orb.three {
+      width: 200px;
+      height: 200px;
+      left: 48%;
+      top: 8%;
+      background: radial-gradient(circle, rgba(236, 72, 153, 0.16), transparent 68%);
+      animation-delay: 2.4s;
+    }
+
+    @keyframes floatOrb {
+      0%, 100% {
+        transform: translate3d(0, 0, 0) scale(1);
+      }
+
+      50% {
+        transform: translate3d(18px, -22px, 0) scale(1.05);
+      }
+    }
+
+    .container {
+      width: min(100% - 40px, var(--max-width));
+      margin: 0 auto;
+    }
+
+    /* Navigation */
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      padding: 18px 0;
+      backdrop-filter: blur(18px);
+      background: linear-gradient(
+        to bottom,
+        rgba(5, 8, 22, 0.9),
+        rgba(5, 8, 22, 0.55)
+      );
+      border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: max-content;
+    }
+
+    .brand-mark {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      background:
+        linear-gradient(135deg, rgba(34, 211, 238, 0.18), rgba(139, 92, 246, 0.2)),
+        rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-2);
+      box-shadow: var(--glow-cyan);
+      color: var(--cyan);
+      font-weight: 900;
+      letter-spacing: -0.05em;
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.05;
+    }
+
+    .brand-name {
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      font-size: 1.02rem;
+    }
+
+    .brand-role {
+      color: var(--muted);
+      font-size: 0.74rem;
+      margin-top: 4px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 8px;
+      border: 1px solid rgba(148, 163, 184, 0.13);
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.56);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      font-size: 0.82rem;
+      font-weight: 600;
+      padding: 9px 12px;
+      border-radius: 999px;
+      transition: 0.22s ease;
+      white-space: nowrap;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--text);
+      background: rgba(255, 255, 255, 0.07);
+      box-shadow: 0 0 0 1px rgba(34, 211, 238, 0.1);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: max-content;
+      padding: 11px 16px;
+      border-radius: 999px;
+      color: #03131a;
+      background: linear-gradient(135deg, var(--cyan), #60a5fa);
+      font-size: 0.88rem;
+      font-weight: 800;
+      box-shadow: 0 12px 34px rgba(34, 211, 238, 0.22);
+      transition: transform 0.22s ease, box-shadow 0.22s ease;
+    }
+
+    .nav-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 18px 45px rgba(34, 211, 238, 0.32);
+    }
+
+    .mobile-toggle {
+      display: none;
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      background: rgba(15, 23, 42, 0.72);
+      color: var(--text);
+      cursor: pointer;
+    }
+
+    .mobile-toggle span {
+      display: block;
+      width: 18px;
+      height: 2px;
+      background: var(--text);
+      margin: 4px auto;
+      border-radius: 999px;
+    }
+
+    /* Hero */
+
+    .hero {
+      position: relative;
+      min-height: calc(100vh - 80px);
+      display: grid;
+      align-items: center;
+      padding: 72px 0 56px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.03fr) minmax(420px, 0.97fr);
+      gap: 48px;
+      align-items: center;
+    }
+
+    .hero-copy {
+      position: relative;
+      z-index: 3;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 12px;
+      border: 1px solid rgba(34, 211, 238, 0.22);
+      border-radius: 999px;
+      background: rgba(34, 211, 238, 0.06);
+      color: var(--cyan);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      box-shadow: var(--glow-cyan);
+    }
+
+    .eyebrow-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--green);
+      box-shadow: 0 0 18px rgba(34, 197, 94, 0.8);
+    }
+
+    .hero-title {
+      margin-top: 26px;
+      font-size: clamp(3.3rem, 7.2vw, 7.7rem);
+      line-height: 0.88;
+      letter-spacing: -0.075em;
+      font-weight: 900;
+    }
+
+    .hero-title span {
+      display: block;
+      background: linear-gradient(135deg, #ffffff 0%, #a5f3fc 38%, #93c5fd 66%, #c4b5fd 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-shadow: 0 0 60px rgba(34, 211, 238, 0.2);
+    }
+
+    .hero-subtitle {
+      margin-top: 26px;
+      color: #c8d3e8;
+      font-size: clamp(1.02rem, 1.65vw, 1.28rem);
+      line-height: 1.7;
+      max-width: 720px;
+    }
+
+    .hero-subtitle strong {
+      color: var(--text);
+      font-weight: 800;
+    }
+
+    .hero-subtitle .highlight {
+      color: var(--cyan);
+      font-weight: 800;
+    }
+
+    .role-stack {
+      margin-top: 24px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .role-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 13px;
+      border: 1px solid rgba(148, 163, 184, 0.17);
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.62);
+      color: #d7e2f7;
+      font-size: 0.88rem;
+      font-weight: 700;
+    }
+
+    .role-pill::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: var(--cyan);
+      box-shadow: 0 0 14px rgba(34, 211, 238, 0.75);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 34px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 50px;
+      padding: 0 20px;
+      border-radius: 999px;
+      font-weight: 850;
+      font-size: 0.95rem;
+      transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+    }
+
+    .btn-primary {
+      color: #03131a;
+      background: linear-gradient(135deg, var(--cyan), #60a5fa);
+      box-shadow: 0 16px 44px rgba(34, 211, 238, 0.22);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 22px 58px rgba(34, 211, 238, 0.32);
+    }
+
+    .btn-secondary {
+      color: var(--text);
+      border: 1px solid rgba(148, 163, 184, 0.2);
+      background: rgba(15, 23, 42, 0.66);
+    }
+
+    .btn-secondary:hover {
+      transform: translateY(-2px);
+      border-color: rgba(34, 211, 238, 0.34);
+      box-shadow: var(--glow-cyan);
+    }
+
+    .metrics-strip {
+      margin-top: 36px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      max-width: 720px;
+    }
+
+    .metric {
+      padding: 16px;
+      border: 1px solid rgba(148, 163, 184, 0.15);
+      border-radius: 18px;
+      background: rgba(15, 23, 42, 0.52);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.035);
+    }
+
+    .metric-value {
+      display: block;
+      color: var(--text);
+      font-size: 1.35rem;
+      font-weight: 900;
+      letter-spacing: -0.04em;
+    }
+
+    .metric-label {
+      display: block;
+      color: var(--muted);
+      margin-top: 5px;
+      font-size: 0.78rem;
+      line-height: 1.35;
+    }
+
+    /* Visual */
+
+    .hero-visual {
+      position: relative;
+      min-height: 610px;
+      display: grid;
+      place-items: center;
+    }
+
+    .visual-halo {
+      position: absolute;
+      width: 480px;
+      height: 480px;
+      border-radius: 999px;
+      background:
+        radial-gradient(circle, rgba(34, 211, 238, 0.16), transparent 58%),
+        radial-gradient(circle at 70% 30%, rgba(139, 92, 246, 0.18), transparent 42%);
+      filter: blur(2px);
+      animation: pulseHalo 5s ease-in-out infinite;
+    }
+
+    @keyframes pulseHalo {
+      0%, 100% {
+        transform: scale(0.98);
+        opacity: 0.75;
+      }
+
+      50% {
+        transform: scale(1.05);
+        opacity: 1;
+      }
+    }
+
+    .terminal {
+      position: relative;
+      width: min(100%, 560px);
+      border: 1px solid rgba(34, 211, 238, 0.2);
+      border-radius: var(--radius-xl);
+      background:
+        linear-gradient(145deg, rgba(15, 23, 42, 0.92), rgba(2, 6, 23, 0.92)),
+        rgba(2, 6, 23, 0.9);
+      box-shadow:
+        var(--shadow),
+        0 0 0 1px rgba(255, 255, 255, 0.035),
+        0 0 80px rgba(34, 211, 238, 0.13);
+      overflow: hidden;
+      transform: perspective(1200px) rotateY(-5deg) rotateX(3deg);
+      animation: floatTerminal 6.5s ease-in-out infinite;
+    }
+
+    @keyframes floatTerminal {
+      0%, 100% {
+        transform: perspective(1200px) rotateY(-5deg) rotateX(3deg) translateY(0);
+      }
+
+      50% {
+        transform: perspective(1200px) rotateY(-3deg) rotateX(2deg) translateY(-12px);
+      }
+    }
+
+    .terminal::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(120deg, transparent 0%, rgba(255, 255, 255, 0.08) 45%, transparent 70%);
+      transform: translateX(-120%);
+      animation: shine 5.5s ease-in-out infinite;
+    }
+
+    @keyframes shine {
+      0%, 22% {
+        transform: translateX(-120%);
+      }
+
+      55%, 100% {
+        transform: translateX(120%);
+      }
+    }
+
+    .terminal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 17px 20px;
+      border-bottom: 1px solid rgba(148, 163, 184, 0.13);
+      background: rgba(15, 23, 42, 0.8);
+    }
+
+    .terminal-dots {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .terminal-dots span {
+      width: 12px;
+      height: 12px;
+      border-radius: 999px;
+      display: block;
+    }
+
+    .terminal-dots span:nth-child(1) {
+      background: #ff5f57;
+    }
+
+    .terminal-dots span:nth-child(2) {
+      background: #ffbd2e;
+    }
+
+    .terminal-dots span:nth-child(3) {
+      background: #28c840;
+    }
+
+    .terminal-title {
+      color: var(--muted);
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.8rem;
+      white-space: nowrap;
+    }
+
+    .terminal-status {
+      color: var(--green);
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+    }
+
+    .terminal-body {
+      padding: 24px;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.86rem;
+      line-height: 1.75;
+      color: #d8e7ff;
+    }
+
+    .terminal-line {
+      min-height: 24px;
+    }
+
+    .t-prompt {
+      color: var(--green);
+      font-weight: 700;
+    }
+
+    .t-cmd {
+      color: var(--cyan);
+    }
+
+    .t-flag {
+      color: #c4b5fd;
+    }
+
+    .t-key {
+      color: #93c5fd;
+    }
+
+    .t-val {
+      color: #eef4ff;
+    }
+
+    .t-success {
+      color: var(--green);
+      font-weight: 800;
+    }
+
+    .t-warn {
+      color: var(--amber);
+      font-weight: 700;
+    }
+
+    .t-comment {
+      color: var(--muted-2);
+    }
+
+    .t-cursor {
+      display: inline-block;
+      width: 9px;
+      height: 17px;
+      margin-left: 4px;
+      background: var(--cyan);
+      vertical-align: -3px;
+      animation: blink 1s steps(2, start) infinite;
+      box-shadow: 0 0 16px rgba(34, 211, 238, 0.8);
+    }
+
+    @keyframes blink {
+      0%, 45% {
+        opacity: 1;
+      }
+
+      46%, 100% {
+        opacity: 0;
+      }
+    }
+
+    .floating-card {
+      position: absolute;
+      z-index: 5;
+      width: 190px;
+      padding: 16px;
+      border: 1px solid rgba(148, 163, 184, 0.16);
+      border-radius: 20px;
+      background: rgba(15, 23, 42, 0.76);
+      backdrop-filter: blur(18px);
+      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.28);
+      animation: floatCard 6s ease-in-out infinite;
+    }
+
+    .floating-card.card-one {
+      top: 38px;
+      left: 0;
+    }
+
+    .floating-card.card-two {
+      right: 0;
+      top: 110px;
+      animation-delay: 1.2s;
+    }
+
+    .floating-card.card-three {
+      left: 24px;
+      bottom: 56px;
+      animation-delay: 2.1s;
+    }
+
+    .floating-card.card-four {
+      right: 14px;
+      bottom: 26px;
+      animation-delay: 2.8s;
+    }
+
+    @keyframes floatCard {
+      0%, 100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-12px);
+      }
+    }
+
+    .card-kicker {
+      color: var(--muted);
+      font-size: 0.72rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.11em;
+    }
+
+    .card-value {
+      margin-top: 8px;
+      font-size: 1.25rem;
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      color: var(--text);
+    }
+
+    .card-desc {
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: 0.78rem;
+      line-height: 1.35;
+    }
+
+    .card-accent {
+      margin-top: 12px;
+      height: 5px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--cyan), var(--violet));
+      box-shadow: 0 0 22px rgba(34, 211, 238, 0.35);
+    }
+
+    .tech-cloud {
+      position: absolute;
+      inset: auto 0 -34px 0;
+      margin: auto;
+      width: min(100%, 560px);
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 9px;
+      z-index: 4;
+    }
+
+    .tech-chip {
+      padding: 8px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.15);
+      background: rgba(15, 23, 42, 0.7);
+      color: #cbd5e1;
+      font-size: 0.74rem;
+      font-weight: 800;
+      backdrop-filter: blur(14px);
+    }
+
+    .scanline {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: linear-gradient(
+        to bottom,
+        transparent,
+        rgba(34, 211, 238, 0.08),
+        transparent
+      );
+      height: 140px;
+      animation: scan 6s linear infinite;
+      opacity: 0.35;
+    }
+
+    @keyframes scan {
+      0% {
+        transform: translateY(-160px);
+      }
+
+      100% {
+        transform: translateY(760px);
+      }
+    }
+
+    /* Responsive */
+
+    @media (max-width: 1120px) {
+      .nav-links {
+        position: fixed;
+        top: 80px;
+        left: 20px;
+        right: 20px;
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        padding: 12px;
+        border-radius: 22px;
+        background: rgba(8, 13, 31, 0.95);
+        backdrop-filter: blur(20px);
+        box-shadow: var(--shadow);
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .nav-links a {
+        width: 100%;
+        padding: 13px 14px;
+      }
+
+      .mobile-toggle {
+        display: inline-block;
+      }
+
+      .hero-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-copy {
+        text-align: center;
+      }
+
+      .hero-subtitle,
+      .metrics-strip {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .role-stack,
+      .hero-actions {
+        justify-content: center;
+      }
+
+      .hero-visual {
+        min-height: 650px;
+      }
+
+      .terminal {
+        transform: none;
+      }
+
+      @keyframes floatTerminal {
+        0%, 100% {
+          transform: translateY(0);
+        }
+
+        50% {
+          transform: translateY(-12px);
+        }
+      }
+    }
+
+    @media (max-width: 720px) {
+      .container {
+        width: min(100% - 28px, var(--max-width));
+      }
+
+      .site-header {
+        padding: 14px 0;
+      }
+
+      .brand-role {
+        display: none;
+      }
+
+      .nav-cta {
+        display: none;
+      }
+
+      .hero {
+        padding: 48px 0 48px;
+      }
+
+      .hero-title {
+        font-size: clamp(3.2rem, 17vw, 5.3rem);
+      }
+
+      .hero-subtitle {
+        font-size: 0.98rem;
+      }
+
+      .metrics-strip {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-visual {
+        min-height: auto;
+        padding-top: 30px;
+        padding-bottom: 110px;
+      }
+
+      .visual-halo {
+        width: 330px;
+        height: 330px;
+      }
+
+      .terminal {
+        border-radius: 22px;
+      }
+
+      .terminal-header {
+        padding: 14px 16px;
+      }
+
+      .terminal-title {
+        font-size: 0.68rem;
+      }
+
+      .terminal-status {
+        display: none;
+      }
+
+      .terminal-body {
+        padding: 18px;
+        font-size: 0.73rem;
+        line-height: 1.72;
+      }
+
+      .floating-card {
+        position: relative;
+        inset: auto !important;
+        width: calc(50% - 8px);
+        min-width: 145px;
+        animation: none;
+      }
+
+      .mobile-card-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        justify-content: center;
+        margin-top: 18px;
+      }
+
+      .card-value {
+        font-size: 1.02rem;
+      }
+
+      .card-desc {
+        font-size: 0.72rem;
+      }
+
+      .tech-cloud {
+        bottom: 0;
+      }
+    }
+
+    @media (max-width: 460px) {
+      .nav-brand {
+        gap: 9px;
+      }
+
+      .brand-mark {
+        width: 38px;
+        height: 38px;
+        border-radius: 12px;
+      }
+
+      .brand-name {
+        font-size: 0.95rem;
+      }
+
+      .hero-actions .btn {
+        width: 100%;
+      }
+
+      .role-stack {
+        gap: 8px;
+      }
+
+      .role-pill {
+        font-size: 0.78rem;
+        padding: 9px 11px;
+      }
+
+      .floating-card {
+        width: 100%;
+      }
+
+      .tech-chip {
+        font-size: 0.68rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page-shell">
+    <div class="orb one"></div>
+    <div class="orb two"></div>
+    <div class="orb three"></div>
+
+    <header class="site-header">
+      <div class="container">
+        <nav class="nav" aria-label="Primary navigation">
+          <a href="index.html" class="nav-brand" aria-label="Simone Mendez home">
+            <div class="brand-mark">SM</div>
+            <div class="brand-text">
+              <span class="brand-name">Simone Mendez</span>
+              <span class="brand-role">PM · Software Engineer · Paralegal</span>
+            </div>
+          </a>
+
+          <div class="nav-links" id="navLinks">
+            <a href="index.html" class="active">Home</a>
+            <a href="why-me.html">Why Me</a>
+            <a href="career-story.html">Career Story</a>
+            <a href="csm-portfolio.html">CSM Portfolio</a>
+            <a href="pm-portfolio.html">PM Portfolio</a>
+            <a href="tracker.html">Tracker</a>
+            <a href="resume-deck.html">Resume Deck</a>
+          </div>
+
+          <div class="nav-actions">
+            <a href="mailto:simone.mendez1@outlook.com" class="nav-cta">Hire Me</a>
+
+            <button class="mobile-toggle" id="mobileToggle" type="button" aria-label="Open navigation menu">
+              <span></span>
+              <span></span>
+              <span></span>
+            </button>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="container">
+          <div class="hero-grid">
+            <div class="hero-copy">
+              <div class="eyebrow">
+                <span class="eyebrow-dot"></span>
+                Active U.S. Secret Clearance
+              </div>
+
+              <h1 class="hero-title" id="hero-title">
+                Simone
+                <span>Mendez</span>
+              </h1>
+
+              <p class="hero-subtitle">
+                <strong>Project Manager, Software Engineer, and Paralegal</strong> with
+                <span class="highlight">10+ years of experience</span> building operational systems,
+                leading enterprise technology initiatives, and translating complex stakeholder needs into scalable,
+                measurable execution.
+              </p>
+
+              <div class="role-stack" aria-label="Professional roles and credentials">
+                <span class="role-pill">PMP</span>
+                <span class="role-pill">Certified ScrumMaster</span>
+                <span class="role-pill">Salesforce Admin</span>
+                <span class="role-pill">Salesforce AI Specialist</span>
+                <span class="role-pill">Paralegal</span>
+              </div>
+
+              <div class="hero-actions">
+                <a href="mailto:simone.mendez1@outlook.com" class="btn btn-primary">
+                  Email Simone
+                  <span aria-hidden="true">→</span>
+                </a>
+
+                <a
+                  href="https://www.linkedin.com/in/simonemendez"
+                  target="_blank"
+                  rel="noopener"
+                  class="btn btn-secondary"
+                >
+                  View LinkedIn
+                </a>
+              </div>
+
+              <div class="metrics-strip" aria-label="Career impact metrics">
+                <div class="metric">
+                  <span class="metric-value">95%+</span>
+                  <span class="metric-label">SLA adherence across high-stakes operations</span>
+                </div>
+
+                <div class="metric">
+                  <span class="metric-value">40%</span>
+                  <span class="metric-label">reduction in ad-hoc requests through process redesign</span>
+                </div>
+
+                <div class="metric">
+                  <span class="metric-value">$2B</span>
+                  <span class="metric-label">Army property book managed with precision and accountability</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="hero-visual" aria-label="Terminal profile visual for Simone Mendez">
+              <div class="visual-halo"></div>
+
+              <div class="terminal">
+                <div class="scanline"></div>
+
+                <div class="terminal-header">
+                  <div class="terminal-dots" aria-hidden="true">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                  </div>
+
+                  <span class="terminal-title">simone@portfolio ~ %</span>
+                  <span class="terminal-status">ONLINE</span>
+                </div>
+
+                <div class="terminal-body">
+                  <div class="terminal-line">
+                    <span class="t-prompt">$</span>
+                    <span class="t-cmd">cat</span>
+                    <span class="t-flag"> --profile</span>
+                    <span class="t-val"> simone_mendez.yml</span>
+                  </div>
+
+                  <div class="terminal-line">
+                    <span class="t-key">name:</span>
+                    <span class="t-val"> "Simone Mendez"</span>
+                  </div>
+
+                  <div class="terminal-line">
+                    <span class="t-key">roles:</span>
+                    <span class="t-val"> ["Project Manager", "Software Engineer", "Paralegal"]</span>
+                  </div>
+
+                  <div class="terminal-line">
+                    <span class="t-key">clearance:</span>
+                    <span class="t-success"> "Active U.S. Secret"</span>
+                  </div>
+
+                  <div class="terminal-line">
+                    <span class="t-key">experience:</span>
+                    <span class="t-val"> "10+ years"</span>
+                  </div>
+
+                  <div class="terminal-line">
+                    <span class="t-key">delivery_metrics:</span>
+                  </div>
+
+                  <div class="terminal-line">
+                    <span class="t-comment">&nbsp;&nbsp;- sla_adherence:</span>
+                    <span class="t-success"> "95%+"</span>
+                  </div>
+
+                  <div class="terminal-line">
+                    <span class="t-comment">&nbsp;&nbsp;- ad_hoc_request_reduction:</span>
+                    <span class="t-success"> "40%"</span>
+                  </div>
+
+                  <div class="terminal-line">
+                    <span class="t-comment">&nbsp;&nbsp;- user_adoption:</span>
+                    <span class="t-success"> "100% within 3 months"</span>
+                  </div>
+
+                  <div class="terminal-line">
+                    <span class="t-comment">&nbsp;&nbsp;- inventory_savings:</span>
+                    <span class="t-success"> "$1.5M"</span>
+                  </div>
+
+                  <div class="terminal-line">
+                    <span class="t-comment">&nbsp;&nbsp;- property_book:</span>
+                    <span class="t-success"> "$2B Army portfolio"</span>
+                  </div>
+
+                  <div class="terminal-line">
+                    <span class="t-key">certifications:</span>
+                    <span class="t-val"> ["PMP", "CSM", "Salesforce Admin", "Salesforce AI Specialist"]</span>
+                  </div>
+
+                  <div class="terminal-line">
+                    <span class="t-key">in_progress:</span>
+                    <span class="t-warn"> ["Gainsight Admin", "AZ-900"]</span>
+                  </div>
+
+                  <div class="terminal-line">
+                    <span class="t-key">tech_stack:</span>
+                    <span class="t-val"> ["Salesforce", "Gainsight", "Oracle Cloud", "Jira", "Power BI"]</span>
+                  </div>
+
+                  <div class="terminal-line">
+                    <span class="t-key">status:</span>
+                    <span class="t-success"> READY_TO_DEPLOY</span>
+                  </div>
+
+                  <div class="terminal-line">
+                    <span class="t-prompt">$</span>
+                    <span class="t-cursor"></span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mobile-card-grid">
+                <div class="floating-card card-one">
+                  <div class="card-kicker">Enterprise CRM</div>
+                  <div class="card-value">$4.2M</div>
+                  <div class="card-desc">Project Phoenix migration leadership</div>
+                  <div class="card-accent"></div>
+                </div>
+
+                <div class="floating-card card-two">
+                  <div class="card-kicker">Adoption</div>
+                  <div class="card-value">100%</div>
+                  <div class="card-desc">User adoption achieved within 3 months</div>
+                  <div class="card-accent"></div>
+                </div>
+
+                <div class="floating-card card-three">
+                  <div class="card-kicker">Savings</div>
+                  <div class="card-value">$1.5M</div>
+                  <div class="card-desc">Inventory cost savings delivered</div>
+                  <div class="card-accent"></div>
+                </div>
+
+                <div class="floating-card card-four">
+                  <div class="card-kicker">SLA</div>
+                  <div class="card-value">95%+</div>
+                  <div class="card-desc">Sustained service-level adherence</div>
+                  <div class="card-accent"></div>
+                </div>
+              </div>
+
+              <div class="tech-cloud" aria-label="Technical proficiencies">
+                <span class="tech-chip">PMP</span>
+                <span class="tech-chip">CSM</span>
+                <span class="tech-chip">Salesforce</span>
+                <span class="tech-chip">Gainsight</span>
+                <span class="tech-chip">Oracle Cloud</span>
+                <span class="tech-chip">Jira</span>
+                <span class="tech-chip">Power BI</span>
+                <span class="tech-chip">AZ-900</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    const mobileToggle = document.getElementById("mobileToggle");
+    const navLinks = document.getElementById("navLinks");
+
+    mobileToggle.addEventListener("click", () => {
+      navLinks.classList.toggle("open");
+
+      const isOpen = navLinks.classList.contains("open");
+      mobileToggle.setAttribute("aria-label", isOpen ? "Close navigation menu" : "Open navigation menu");
+    });
+
+    document.querySelectorAll(".nav-links a").forEach((link) => {
+      link.addEventListener("click", () => {
+        navLinks.classList.remove("open");
+        mobileToggle.setAttribute("aria-label", "Open navigation menu");
+      });
+    });
+
+    window.addEventListener("resize", () => {
+      if (window.innerWidth > 1120) {
+        navLinks.classList.remove("open");
+        mobileToggle.setAttribute("aria-label", "Open navigation menu");
+      }
+    });
+  </script>
+</body>
+</html>

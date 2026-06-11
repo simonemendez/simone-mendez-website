@@ -1,0 +1,1285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Why Me | Simone Mendez</title>
+  <meta
+    name="description"
+    content="Why Simone Mendez stands out as a Project Manager, Customer Success Manager, Software Engineer, Salesforce-certified professional, and Paralegal with active U.S. Secret Clearance."
+  />
+
+  <meta property="og:title" content="Why Me | Simone Mendez" />
+  <meta
+    property="og:description"
+    content="Explore Simone Mendez's unique blend of legal, technical, project management, SaaS, customer success, and cleared professional experience."
+  />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://simone-mendez-portfolio.netlify.app/why-me.html" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <style>
+    :root {
+      --bg: #060711;
+      --bg-2: #090b18;
+      --panel: rgba(255, 255, 255, 0.065);
+      --panel-strong: rgba(255, 255, 255, 0.105);
+      --text: #f7f7ff;
+      --muted: #b7bad5;
+      --muted-2: #8d92b3;
+      --cyan: #38e8ff;
+      --blue: #5a7cff;
+      --purple: #a66cff;
+      --pink: #ff5fd2;
+      --green: #5dffbf;
+      --gold: #ffd166;
+      --danger: #ff6b8a;
+      --border: rgba(255, 255, 255, 0.14);
+      --shadow: 0 30px 90px rgba(0, 0, 0, 0.42);
+      --radius: 24px;
+      --radius-sm: 16px;
+      --max: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at 15% 15%, rgba(56, 232, 255, 0.16), transparent 32%),
+        radial-gradient(circle at 82% 10%, rgba(166, 108, 255, 0.18), transparent 34%),
+        radial-gradient(circle at 50% 85%, rgba(255, 95, 210, 0.12), transparent 32%),
+        linear-gradient(135deg, #050611 0%, #090b18 45%, #070816 100%);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+      background-size: 44px 44px;
+      mask-image: radial-gradient(circle at center, black 0%, transparent 78%);
+      z-index: -3;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background: linear-gradient(
+        to bottom,
+        transparent,
+        rgba(255, 255, 255, 0.025),
+        transparent
+      );
+      background-size: 100% 6px;
+      opacity: 0.22;
+      z-index: 20;
+      mix-blend-mode: screen;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .orb {
+      position: fixed;
+      width: 360px;
+      height: 360px;
+      border-radius: 999px;
+      filter: blur(40px);
+      opacity: 0.34;
+      pointer-events: none;
+      z-index: -2;
+      animation: floatOrb 11s ease-in-out infinite alternate;
+    }
+
+    .orb.one {
+      top: 12%;
+      left: -120px;
+      background: rgba(56, 232, 255, 0.5);
+    }
+
+    .orb.two {
+      top: 38%;
+      right: -130px;
+      background: rgba(166, 108, 255, 0.48);
+      animation-delay: 1.5s;
+    }
+
+    .orb.three {
+      bottom: -130px;
+      left: 32%;
+      background: rgba(255, 95, 210, 0.35);
+      animation-delay: 2.7s;
+    }
+
+    @keyframes floatOrb {
+      0% {
+        transform: translate3d(0, 0, 0) scale(1);
+      }
+      100% {
+        transform: translate3d(35px, -35px, 0) scale(1.08);
+      }
+    }
+
+    .nav-wrap {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(20px);
+      background: rgba(6, 7, 17, 0.76);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.09);
+    }
+
+    .nav {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 18px 22px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 22px;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      min-width: max-content;
+    }
+
+    .brand strong {
+      font-size: 0.98rem;
+      letter-spacing: 0.02em;
+    }
+
+    .brand span {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.72rem;
+      color: var(--muted-2);
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .nav-links a {
+      font-size: 0.82rem;
+      color: var(--muted);
+      padding: 9px 11px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      transition: 0.25s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--text);
+      border-color: rgba(56, 232, 255, 0.25);
+      background: rgba(56, 232, 255, 0.08);
+      box-shadow: 0 0 24px rgba(56, 232, 255, 0.12);
+    }
+
+    .page-shell {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 72px 22px;
+    }
+
+    .hero {
+      min-height: calc(100vh - 74px);
+      display: grid;
+      grid-template-columns: 1.14fr 0.86fr;
+      gap: 34px;
+      align-items: center;
+      padding-top: 54px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      width: fit-content;
+      padding: 9px 13px;
+      border-radius: 999px;
+      border: 1px solid rgba(56, 232, 255, 0.22);
+      background: rgba(56, 232, 255, 0.07);
+      color: #dffbff;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 22px;
+    }
+
+    .pulse {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 18px var(--green);
+      animation: pulse 1.6s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        transform: scale(1);
+        opacity: 0.8;
+      }
+      50% {
+        transform: scale(1.55);
+        opacity: 1;
+      }
+    }
+
+    h1 {
+      font-size: clamp(3rem, 7vw, 6.4rem);
+      line-height: 0.93;
+      letter-spacing: -0.075em;
+      margin-bottom: 24px;
+    }
+
+    .gradient-text {
+      background: linear-gradient(90deg, var(--cyan), var(--purple), var(--pink), var(--green));
+      background-size: 260% 260%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      animation: gradientShift 6s ease-in-out infinite;
+    }
+
+    @keyframes gradientShift {
+      0%, 100% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+    }
+
+    .hero-copy {
+      max-width: 750px;
+      color: var(--muted);
+      font-size: 1.1rem;
+      line-height: 1.8;
+      margin-bottom: 28px;
+    }
+
+    .hero-copy strong {
+      color: var(--text);
+    }
+
+    .cta-row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 26px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 12px 18px;
+      border-radius: 999px;
+      font-weight: 800;
+      font-size: 0.92rem;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      transition: 0.25s ease;
+    }
+
+    .btn.primary {
+      background: linear-gradient(135deg, var(--cyan), var(--blue), var(--purple));
+      color: #ffffff;
+      box-shadow: 0 16px 42px rgba(90, 124, 255, 0.28);
+    }
+
+    .btn.secondary {
+      background: rgba(255, 255, 255, 0.07);
+      color: var(--text);
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 18px 45px rgba(56, 232, 255, 0.18);
+    }
+
+    .hero-panel {
+      position: relative;
+      padding: 26px;
+      border-radius: var(--radius);
+      background:
+        linear-gradient(135deg, rgba(255,255,255,0.12), rgba(255,255,255,0.045)),
+        rgba(255,255,255,0.06);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .hero-panel::before,
+    .card::before,
+    .legal-panel::before,
+    .quote-card::before,
+    .metric-card::before {
+      content: "";
+      position: absolute;
+      inset: -2px;
+      background: linear-gradient(
+        120deg,
+        transparent 0%,
+        rgba(56, 232, 255, 0.14) 35%,
+        rgba(255, 95, 210, 0.12) 50%,
+        transparent 70%
+      );
+      transform: translateX(-100%);
+      transition: transform 0.9s ease;
+      pointer-events: none;
+    }
+
+    .hero-panel:hover::before,
+    .card:hover::before,
+    .legal-panel:hover::before,
+    .quote-card:hover::before,
+    .metric-card:hover::before {
+      transform: translateX(100%);
+    }
+
+    .terminal-top {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+
+    .dot.red { background: #ff5f57; }
+    .dot.yellow { background: #ffbd2e; }
+    .dot.green { background: #28c840; }
+
+    .terminal-title {
+      margin-left: auto;
+      color: var(--muted-2);
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.75rem;
+    }
+
+    .profile-card {
+      display: grid;
+      gap: 16px;
+    }
+
+    .profile-line {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .profile-line span {
+      color: var(--muted-2);
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+    }
+
+    .profile-line strong {
+      color: var(--text);
+      text-align: right;
+      font-size: 0.95rem;
+    }
+
+    .clearance {
+      margin-top: 18px;
+      padding: 18px;
+      border-radius: 18px;
+      background: rgba(93, 255, 191, 0.08);
+      border: 1px solid rgba(93, 255, 191, 0.24);
+    }
+
+    .clearance h3 {
+      color: var(--green);
+      margin-bottom: 7px;
+      font-size: 1rem;
+    }
+
+    .clearance p {
+      color: var(--muted);
+      line-height: 1.65;
+      font-size: 0.94rem;
+    }
+
+    .section-header {
+      max-width: 840px;
+      margin-bottom: 30px;
+    }
+
+    .section-kicker {
+      color: var(--cyan);
+      font-family: "JetBrains Mono", monospace;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      font-size: 0.78rem;
+      margin-bottom: 14px;
+    }
+
+    h2 {
+      font-size: clamp(2rem, 4vw, 3.65rem);
+      line-height: 1;
+      letter-spacing: -0.05em;
+      margin-bottom: 18px;
+    }
+
+    .section-copy {
+      color: var(--muted);
+      font-size: 1.02rem;
+      line-height: 1.8;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .card,
+    .metric-card,
+    .legal-panel,
+    .quote-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: var(--radius-sm);
+      background:
+        linear-gradient(135deg, rgba(255,255,255,0.105), rgba(255,255,255,0.04)),
+        rgba(255,255,255,0.055);
+      border: 1px solid var(--border);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.28);
+    }
+
+    .card {
+      padding: 24px;
+      min-height: 240px;
+    }
+
+    .card-number {
+      color: var(--cyan);
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.13em;
+      margin-bottom: 15px;
+    }
+
+    .card h3 {
+      font-size: 1.2rem;
+      letter-spacing: -0.03em;
+      margin-bottom: 12px;
+    }
+
+    .card p {
+      color: var(--muted);
+      line-height: 1.72;
+      font-size: 0.96rem;
+    }
+
+    .metric-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+      margin-top: 28px;
+    }
+
+    .metric-card {
+      padding: 25px;
+      min-height: 175px;
+    }
+
+    .metric-value {
+      font-size: 2.6rem;
+      font-weight: 900;
+      letter-spacing: -0.07em;
+      margin-bottom: 9px;
+      background: linear-gradient(90deg, var(--cyan), var(--purple));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .metric-card p {
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 0.93rem;
+    }
+
+    .split-feature {
+      display: grid;
+      grid-template-columns: 0.86fr 1.14fr;
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .legal-panel {
+      padding: 30px;
+      min-height: 100%;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(56, 232, 255, 0.13), transparent 36%),
+        linear-gradient(135deg, rgba(255,255,255,0.11), rgba(255,255,255,0.04));
+    }
+
+    .legal-panel h3 {
+      font-size: clamp(1.6rem, 2.4vw, 2.5rem);
+      line-height: 1.05;
+      letter-spacing: -0.055em;
+      margin-bottom: 18px;
+    }
+
+    .legal-panel p {
+      color: var(--muted);
+      line-height: 1.8;
+      font-size: 1rem;
+    }
+
+    .legal-highlight-list {
+      list-style: none;
+      display: grid;
+      gap: 12px;
+      margin-top: 22px;
+    }
+
+    .legal-highlight-list li {
+      display: flex;
+      gap: 10px;
+      color: var(--muted);
+      line-height: 1.55;
+      font-size: 0.95rem;
+    }
+
+    .legal-highlight-list li::before {
+      content: "◆";
+      color: var(--cyan);
+      font-size: 0.75rem;
+      margin-top: 3px;
+      text-shadow: 0 0 14px rgba(56, 232, 255, 0.8);
+    }
+
+    .quote-card {
+      padding: 34px;
+      background:
+        radial-gradient(circle at 15% 15%, rgba(255, 95, 210, 0.12), transparent 35%),
+        radial-gradient(circle at 80% 25%, rgba(56, 232, 255, 0.11), transparent 35%),
+        rgba(255,255,255,0.06);
+    }
+
+    .quote {
+      font-size: clamp(1.7rem, 3vw, 3.1rem);
+      line-height: 1.08;
+      letter-spacing: -0.055em;
+      margin-bottom: 16px;
+    }
+
+    .quote-sub {
+      color: var(--muted);
+      font-size: 1.03rem;
+      line-height: 1.8;
+      max-width: 950px;
+    }
+
+    .stack-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 24px;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      padding: 9px 12px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.07);
+      border: 1px solid rgba(255, 255, 255, 0.13);
+      color: #e8e9ff;
+      font-size: 0.82rem;
+      font-weight: 700;
+    }
+
+    .timeline {
+      position: relative;
+      display: grid;
+      gap: 16px;
+      margin-top: 28px;
+    }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 170px 1fr;
+      gap: 18px;
+      padding: 22px;
+      border-radius: var(--radius-sm);
+      background: rgba(255, 255, 255, 0.055);
+      border: 1px solid var(--border);
+    }
+
+    .timeline-year {
+      font-family: "JetBrains Mono", monospace;
+      color: var(--cyan);
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    .timeline-item h3 {
+      margin-bottom: 8px;
+      font-size: 1.18rem;
+    }
+
+    .timeline-item p {
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 0.95rem;
+    }
+
+    .contact-strip {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 22px;
+      align-items: center;
+      padding: 34px;
+      border-radius: var(--radius);
+      background:
+        linear-gradient(135deg, rgba(56,232,255,0.13), rgba(166,108,255,0.11)),
+        rgba(255,255,255,0.06);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      box-shadow: var(--shadow);
+    }
+
+    .contact-strip h2 {
+      margin-bottom: 10px;
+    }
+
+    .contact-strip p {
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    footer {
+      padding: 28px 22px 44px;
+      text-align: center;
+      color: var(--muted-2);
+      font-size: 0.9rem;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 0.75s ease, transform 0.75s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .delay-1 { transition-delay: 0.08s; }
+    .delay-2 { transition-delay: 0.16s; }
+    .delay-3 { transition-delay: 0.24s; }
+    .delay-4 { transition-delay: 0.32s; }
+
+    @media (max-width: 980px) {
+      .hero,
+      .split-feature,
+      .contact-strip {
+        grid-template-columns: 1fr;
+      }
+
+      .grid-3,
+      .metric-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .nav {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .nav-links {
+        justify-content: flex-start;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .page-shell {
+        padding: 54px 18px;
+      }
+
+      .hero {
+        padding-top: 40px;
+      }
+
+      .grid-2,
+      .grid-3,
+      .metric-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .timeline-item {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-strip {
+        padding: 24px;
+      }
+
+      .hero-panel,
+      .quote-card,
+      .legal-panel {
+        padding: 22px;
+      }
+
+      .nav-links a {
+        font-size: 0.78rem;
+        padding: 8px 9px;
+      }
+    }
+  </style>
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Simone Mendez",
+      "url": "https://simone-mendez-portfolio.netlify.app",
+      "email": "mailto:simone.mendez1@outlook.com",
+      "sameAs": [
+        "https://www.linkedin.com/in/simonemendez"
+      ],
+      "jobTitle": [
+        "Project Manager",
+        "Customer Success Manager",
+        "Software Engineer",
+        "Paralegal"
+      ],
+      "knowsAbout": [
+        "Project Management",
+        "Customer Success",
+        "SaaS",
+        "Salesforce",
+        "Legal Research",
+        "Case File Management",
+        "eDiscovery",
+        "Compliance Documentation",
+        "Software Engineering",
+        "Risk Management"
+      ]
+    }
+  </script>
+</head>
+
+<body>
+  <div class="orb one"></div>
+  <div class="orb two"></div>
+  <div class="orb three"></div>
+
+  <header class="nav-wrap">
+    <nav class="nav" aria-label="Primary navigation">
+      <a class="brand" href="index.html">
+        <strong>Simone Mendez</strong>
+        <span>PM · CSM · SWE · Paralegal</span>
+      </a>
+
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="why-me.html" class="active">Why Me</a>
+        <a href="career-story.html">Career Story</a>
+        <a href="csm-portfolio.html">CSM Portfolio</a>
+        <a href="pm-portfolio.html">PM Portfolio</a>
+        <a href="tracker.html">Tracker</a>
+        <a href="resume-deck.html">Resume Deck</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="page-shell hero">
+      <div class="reveal">
+        <div class="eyebrow">
+          <span class="pulse"></span>
+          Why Simone Mendez
+        </div>
+
+        <h1>
+          I bring legal precision,
+          <span class="gradient-text">technical execution,</span>
+          and project leadership together.
+        </h1>
+
+        <p class="hero-copy">
+          I am not a one-lane professional. I combine experience across
+          <strong>Project Management, Customer Success, Software Engineering, Salesforce, Legal Support, and Compliance-minded Operations</strong>.
+          That blend allows me to understand business needs, protect sensitive details, communicate clearly, and move complex work forward with structure.
+        </p>
+
+        <p class="hero-copy">
+          My paralegal background strengthens everything I do. It trained me to research thoroughly,
+          document accurately, manage confidential information, track deadlines, organize records,
+          support compliance, and think with risk awareness before issues become expensive.
+        </p>
+
+        <div class="cta-row">
+          <a class="btn primary" href="resume-deck.html">View Resume Deck</a>
+          <a class="btn secondary" href="Simone-Mendez-Resume.pdf" target="_blank" rel="noopener">Download Resume</a>
+          <a class="btn secondary" href="mailto:simone.mendez1@outlook.com">Contact Me</a>
+        </div>
+      </div>
+
+      <aside class="hero-panel reveal delay-2" aria-label="Professional snapshot">
+        <div class="terminal-top">
+          <span class="dot red"></span>
+          <span class="dot yellow"></span>
+          <span class="dot green"></span>
+          <span class="terminal-title">profile.snapshot</span>
+        </div>
+
+        <div class="profile-card">
+          <div class="profile-line">
+            <span>Core Identity</span>
+            <strong>PM / CSM / SWE / Paralegal</strong>
+          </div>
+
+          <div class="profile-line">
+            <span>Strength</span>
+            <strong>Execution with legal-level detail</strong>
+          </div>
+
+          <div class="profile-line">
+            <span>Tools</span>
+            <strong>Salesforce · Jira · Gainsight · Oracle · Power BI</strong>
+          </div>
+
+          <div class="profile-line">
+            <span>Certifications</span>
+            <strong>PMP · CSM · Salesforce Admin · AI Specialist</strong>
+          </div>
+
+          <div class="profile-line">
+            <span>Impact</span>
+            <strong>95%+ SLA · $1.5M Savings · 100% Adoption</strong>
+          </div>
+
+          <div class="clearance">
+            <h3>Active U.S. Secret Clearance</h3>
+            <p>
+              Trusted to handle sensitive environments, confidential information, controlled documentation,
+              stakeholder coordination, and mission-critical execution.
+            </p>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <!-- DIFFERENTIATORS -->
+    <section class="page-shell reveal">
+      <div class="section-header">
+        <div class="section-kicker">Differentiators</div>
+        <h2>My edge is the combination.</h2>
+        <p class="section-copy">
+          I can operate at the intersection of people, process, technology, documentation, and risk.
+          That means I am able to speak with customers, coordinate with technical teams, support leadership,
+          manage deliverables, document decisions, and protect the details that matter.
+        </p>
+      </div>
+
+      <div class="grid-3">
+        <article class="card reveal delay-1">
+          <div class="card-number">01 · Project Leadership</div>
+          <h3>I create structure where things feel messy.</h3>
+          <p>
+            I organize priorities, manage timelines, clarify ownership, track risks, communicate status,
+            and help teams move from ambiguity to execution.
+          </p>
+        </article>
+
+        <article class="card reveal delay-2">
+          <div class="card-number">02 · Customer Success</div>
+          <h3>I understand adoption, retention, and user trust.</h3>
+          <p>
+            I focus on outcomes, onboarding, stakeholder alignment, issue resolution, user enablement,
+            and customer experience that feels supported and intentional.
+          </p>
+        </article>
+
+        <article class="card reveal delay-3">
+          <div class="card-number">03 · Technical Fluency</div>
+          <h3>I bridge business and technical teams.</h3>
+          <p>
+            With a software engineering foundation, I understand systems, data, workflows, requirements,
+            and how to communicate technical needs without losing the business context.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <!-- METRICS -->
+    <section class="page-shell reveal">
+      <div class="section-header">
+        <div class="section-kicker">Measured Impact</div>
+        <h2>I care about results that can be tracked.</h2>
+        <p class="section-copy">
+          My work is grounded in execution, documentation, accountability, and measurable business outcomes.
+        </p>
+      </div>
+
+      <div class="metric-grid">
+        <article class="metric-card reveal delay-1">
+          <div class="metric-value">95%+</div>
+          <p>SLA adherence through disciplined tracking, communication, and operational follow-through.</p>
+        </article>
+
+        <article class="metric-card reveal delay-2">
+          <div class="metric-value">40%</div>
+          <p>Reduction in ad-hoc requests by improving structure, visibility, documentation, and process control.</p>
+        </article>
+
+        <article class="metric-card reveal delay-3">
+          <div class="metric-value">100%</div>
+          <p>User adoption by focusing on enablement, communication, stakeholder buy-in, and practical support.</p>
+        </article>
+
+        <article class="metric-card reveal delay-4">
+          <div class="metric-value">$1.5M</div>
+          <p>Inventory savings supported by better visibility, process alignment, and execution discipline.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- PARALEGAL ADVANTAGE -->
+    <section class="page-shell reveal">
+      <div class="section-header">
+        <div class="section-kicker">Paralegal Advantage</div>
+        <h2>Legal precision is one of my strongest differentiators.</h2>
+        <p class="section-copy">
+          My paralegal background gives me a major advantage in project management, SaaS, operations,
+          compliance, and customer-facing environments. I know how to research deeply, organize complex
+          information, manage sensitive records, support deadlines, prepare documentation, and communicate
+          with accuracy. I bring the discipline of legal work into every project I touch.
+        </p>
+      </div>
+
+      <div class="split-feature">
+        <div class="legal-panel reveal delay-1">
+          <h3>I do not just manage tasks — I protect the details that matter.</h3>
+
+          <p>
+            Legal and paralegal work trained me to think critically, document carefully, maintain confidentiality,
+            organize evidence, support case strategy, and track deadlines with precision. In fast-moving business
+            and technical environments, that means I bring stronger risk awareness, cleaner documentation,
+            better follow-through, and a higher standard of accountability.
+          </p>
+
+          <br />
+
+          <p>
+            Whether I am supporting a legal team, managing a project, documenting a process, assisting with
+            compliance, reviewing records, or gathering stakeholder information, I approach the work with the
+            same mindset: be accurate, be organized, be timely, and make the information easy to act on.
+          </p>
+
+          <ul class="legal-highlight-list">
+            <li>Strong legal research, writing, and issue-spotting skills.</li>
+            <li>Confident handling confidential, sensitive, and time-bound documentation.</li>
+            <li>Comfortable organizing complex records into usable, decision-ready information.</li>
+            <li>Process-minded approach to compliance, audit trails, approvals, and version control.</li>
+          </ul>
+        </div>
+
+        <div class="grid-2">
+          <article class="card reveal delay-2">
+            <div class="card-number">Legal Research & Writing</div>
+            <h3>Clear research, analysis, and written summaries</h3>
+            <p>
+              Skilled at researching legal and procedural issues, identifying relevant information,
+              organizing findings, and preparing clear written summaries that support attorney,
+              leadership, or stakeholder decision-making.
+            </p>
+          </article>
+
+          <article class="card reveal delay-3">
+            <div class="card-number">Case File Management</div>
+            <h3>Organized case records and deadline tracking</h3>
+            <p>
+              Experienced with maintaining case files, organizing matter-related documents,
+              tracking deadlines, managing records, preparing case timelines, and keeping information
+              accessible, accurate, and up to date.
+            </p>
+          </article>
+
+          <article class="card reveal delay-2">
+            <div class="card-number">eDiscovery & Document Review</div>
+            <h3>Evidence organization and high-volume record review</h3>
+            <p>
+              Comfortable supporting eDiscovery and document review workflows, including reviewing
+              large volumes of records, categorizing documents, identifying key information,
+              flagging issues, and supporting defensible documentation practices.
+            </p>
+          </article>
+
+          <article class="card reveal delay-3">
+            <div class="card-number">Legal Drafting</div>
+            <h3>Drafting legal documents, summaries, and correspondence</h3>
+            <p>
+              Able to support drafting and formatting legal documents, internal summaries,
+              correspondence, case notes, intake summaries, status updates, and other documentation
+              with attention to tone, structure, accuracy, and completeness.
+            </p>
+          </article>
+        </div>
+      </div>
+
+      <div class="grid-3" style="margin-top: 18px;">
+        <article class="card reveal delay-1">
+          <div class="card-number">Compliance Documentation</div>
+          <h3>Process discipline and audit-ready records</h3>
+          <p>
+            I understand the importance of written procedures, approval trails, accurate records,
+            version control, confidentiality, and documentation that can stand up to review.
+            This makes me especially effective in regulated, legal, government, healthcare,
+            SaaS, and operations environments.
+          </p>
+        </article>
+
+        <article class="card reveal delay-2">
+          <div class="card-number">Client Intake</div>
+          <h3>Information gathering with empathy and precision</h3>
+          <p>
+            Experienced in gathering information from clients, stakeholders, or internal users,
+            asking thoughtful follow-up questions, documenting facts clearly, identifying missing
+            information, and translating conversations into organized next steps.
+          </p>
+        </article>
+
+        <article class="card reveal delay-3">
+          <div class="card-number">Court Filing & Admin Support</div>
+          <h3>Filing, scheduling, coordination, and administrative accuracy</h3>
+          <p>
+            Familiar with legal administrative support such as court filing coordination,
+            calendar management, document preparation, deadline support, correspondence,
+            records management, and professional communication with internal and external parties.
+          </p>
+        </article>
+      </div>
+
+      <div class="quote-card reveal delay-2" style="margin-top: 22px;">
+        <h2 class="quote">
+          My paralegal experience makes me stronger because I know how to manage complexity without losing control of the details.
+        </h2>
+
+        <p class="quote-sub">
+          Legal work demands accuracy, confidentiality, structure, research, writing, documentation,
+          and deadline discipline. Those are the same qualities that make projects successful,
+          SaaS implementations smoother, compliance stronger, and operations easier to trust.
+        </p>
+
+        <div class="stack-tags" aria-label="Legal and paralegal skills">
+          <span class="tag">Legal Research & Writing</span>
+          <span class="tag">Case File Management</span>
+          <span class="tag">eDiscovery</span>
+          <span class="tag">Document Review</span>
+          <span class="tag">Legal Drafting</span>
+          <span class="tag">Legal Summaries</span>
+          <span class="tag">Compliance Documentation</span>
+          <span class="tag">Client Intake</span>
+          <span class="tag">Information Gathering</span>
+          <span class="tag">Court Filing Support</span>
+          <span class="tag">Administrative Support</span>
+          <span class="tag">Confidential Records</span>
+          <span class="tag">Deadline Tracking</span>
+          <span class="tag">Legal Operations</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- TECH + BUSINESS STACK -->
+    <section class="page-shell reveal">
+      <div class="section-header">
+        <div class="section-kicker">Tools, Certifications & Operating Strengths</div>
+        <h2>I bring a practical, cross-functional toolkit.</h2>
+        <p class="section-copy">
+          I am comfortable working across business systems, customer success platforms,
+          project management tools, data dashboards, legal documentation, and technical workflows.
+        </p>
+      </div>
+
+      <div class="quote-card reveal delay-1">
+        <div class="stack-tags">
+          <span class="tag">PMP</span>
+          <span class="tag">Certified ScrumMaster</span>
+          <span class="tag">Salesforce Administrator</span>
+          <span class="tag">Salesforce AI Specialist</span>
+          <span class="tag">Gainsight</span>
+          <span class="tag">Oracle Cloud</span>
+          <span class="tag">Jira</span>
+          <span class="tag">Power BI</span>
+          <span class="tag">SaaS Implementation</span>
+          <span class="tag">Stakeholder Management</span>
+          <span class="tag">Risk Management</span>
+          <span class="tag">Process Improvement</span>
+          <span class="tag">Requirements Gathering</span>
+          <span class="tag">Documentation Control</span>
+          <span class="tag">Customer Enablement</span>
+          <span class="tag">Legal Research</span>
+          <span class="tag">Compliance Support</span>
+          <span class="tag">Confidential Information Handling</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW I WORK -->
+    <section class="page-shell reveal">
+      <div class="section-header">
+        <div class="section-kicker">How I Work</div>
+        <h2>Calm, structured, accountable, and detail-driven.</h2>
+        <p class="section-copy">
+          My work style is built around clarity. I want teams to know what is happening,
+          what is blocked, what is next, who owns what, and what decision needs to be made.
+        </p>
+      </div>
+
+      <div class="timeline">
+        <div class="timeline-item reveal delay-1">
+          <div class="timeline-year">Step 01</div>
+          <div>
+            <h3>Clarify the objective</h3>
+            <p>
+              I identify the real outcome, the stakeholders involved, the constraints,
+              the risks, and the success criteria before execution begins.
+            </p>
+          </div>
+        </div>
+
+        <div class="timeline-item reveal delay-2">
+          <div class="timeline-year">Step 02</div>
+          <div>
+            <h3>Organize the information</h3>
+            <p>
+              I create clean documentation, track requirements, structure files or tasks,
+              and make sure information is easy to find and act on.
+            </p>
+          </div>
+        </div>
+
+        <div class="timeline-item reveal delay-3">
+          <div class="timeline-year">Step 03</div>
+          <div>
+            <h3>Execute with visibility</h3>
+            <p>
+              I keep teams aligned through status updates, issue tracking, risk escalation,
+              timeline management, and clear next steps.
+            </p>
+          </div>
+        </div>
+
+        <div class="timeline-item reveal delay-4">
+          <div class="timeline-year">Step 04</div>
+          <div>
+            <h3>Close the loop</h3>
+            <p>
+              I document outcomes, confirm adoption, capture lessons learned, and make sure
+              the work is not just completed but sustainable.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CLOSING CTA -->
+    <section class="page-shell reveal">
+      <div class="contact-strip">
+        <div>
+          <h2>Looking for someone who can manage complexity and protect the details?</h2>
+          <p>
+            I bring the discipline of legal work, the structure of project management,
+            the customer focus of SaaS, and the technical fluency of software engineering.
+          </p>
+        </div>
+
+        <div class="cta-row">
+          <a class="btn primary" href="mailto:simone.mendez1@outlook.com">Email Simone</a>
+          <a class="btn secondary" href="https://www.linkedin.com/in/simonemendez" target="_blank" rel="noopener">LinkedIn</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © 2026 Simone Mendez. All rights reserved. ·
+    <a href="mailto:simone.mendez1@outlook.com">simone.mendez1@outlook.com</a> ·
+    <a href="https://www.linkedin.com/in/simonemendez" target="_blank" rel="noopener">linkedin.com/in/simonemendez</a>
+  </footer>
+
+  <script>
+    const revealElements = document.querySelectorAll(".reveal");
+
+    const revealObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold: 0.14
+      }
+    );
+
+    revealElements.forEach((element) => {
+      revealObserver.observe(element);
+    });
+  </script>
+</body>
+</html>
