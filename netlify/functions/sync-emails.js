@@ -37,7 +37,16 @@ const COMPANY_BLOCKLIST = new Set([
   "the position", "this role", "the role", "this time", "our team", "the team",
   "us", "you", "your application", "our company", "the company", "the following",
   "this opportunity", "the opportunity", "your interest", "your resume",
-  "your account", "the hiring team", "our records", "your profile"
+  "your account", "the hiring team", "our records", "your profile""doctor","yourdoctor",
+"appointment",
+"medical",
+"patient",
+"tanf",
+"benefits",
+"vacation",
+"cruise",
+"travel",
+"reservation"
 ]);
 
 function normalizeText(value) {
@@ -135,7 +144,10 @@ function extractCompany(subject, fullText) {
   return "";
 }
 
-function extractLinkedInPosition(fullText, company) {
+if (isLinkedIn) {
+  const linkedInTitle = extractLinkedInPosition(fullText, company);
+  if (linkedInTitle) return linkedInTitle;
+}
   if (!fullText || !company) return "";
 
   const text = normalizeText(fullText);
@@ -222,9 +234,9 @@ if (/\b(pleased to offer|happy to offer|glad to offer|excited to offer|we would 
   return "Offer";
 }
 
-  if (/\b(brief phone screening|phone screening|phone screen|screening call|recruiter screen|phone call|phone interview|video interview|virtual interview|interview|schedule|interview scheduled|next round|next step|time slot|calendar|zoom|teams|meet)\b/.test(text)) {
-    return "Interview";
-  }
+  if (/(brief\s+phone\s+screening|phone\s+screening|phone\s+screen|screening\s+call|recruiter\s+screen|phone\s+interview|video\s+interview|virtual\s+interview|\binterview\b|interview\s+scheduled|next\s+round|hiring\s+manager|recruiter\s+call)/i.test(text)) {
+  return "Interview";
+}
 
   return "Applied";
 }
@@ -392,7 +404,7 @@ try {
         const domain = sender.split("@")[1] || "";
         const root = domain.split(".")[0] || "";
 
-        if (root && !GENERIC_DOMAINS.has(root)) {
+        if (root && root.length > 2 && !GENERIC_DOMAINS.has(root)) {
           company = root.charAt(0).toUpperCase() + root.slice(1);
         }
       }
