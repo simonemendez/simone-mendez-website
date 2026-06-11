@@ -479,8 +479,19 @@
     let filteredData = [];
     let charts = {};
 
-    function init() {
-      loadFromStorage();
+   async function init() {
+      async function loadApplicationsFromFile() {
+  try {
+    const response = await fetch("/data/applications.json", { cache: "no-store" });
+    applications = await response.json();
+    filteredData = [...applications];
+  } catch (error) {
+    console.error("Could not load applications.json:", error);
+    applications = [];
+    filteredData = [];
+  }
+}
+      await loadApplicationsFromFile();;
       renderTable();
       updateStats();
       createCharts();
