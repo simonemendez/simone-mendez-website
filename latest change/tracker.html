@@ -463,6 +463,18 @@
   </footer>
 
   <script>
+    // Manual entries you know are real. These stay visible even if Outlook misses them.
+    const manualApplications = [
+      {
+        id: "manual-morgan-and-morgan-case-manager-offer",
+        company: "Morgan & Morgan",
+        position: "Case Manager",
+        dateApplied: "2026-06-11",
+        status: "offer",
+        notes: "Manual entry: confirmed offer"
+      }
+    ];
+
     let applications = [];
     let filteredData = [];
     let charts = {};
@@ -482,17 +494,47 @@
       localStorage.setItem("lastSyncDate", now);
     }
 
+    function mergeApplications(primaryApps, fallbackApps = []) {
+      const merged = [];
+      const seen = new Set();
+
+      [...primaryApps, ...fallbackApps].forEach((app, index) => {
+        const normalized = {
+          id: app.id || `app-${index + 1}`,
+          company: app.company || "Unknown",
+          position: app.position || "—",
+          dateApplied: app.dateApplied || "",
+          status: normalizeStatus(app.status),
+          notes: app.notes || ""
+        };
+
+        const key = String(normalized.id || `${normalized.company}|${normalized.position}|${normalized.dateApplied}`).toLowerCase();
+        if (!seen.has(key)) {
+          seen.add(key);
+          merged.push(normalized);
+        }
+      });
+
+      return merged;
+    }
+
     function loadFromStorage() {
       const stored = localStorage.getItem("jobApplications");
       if (stored) {
         try {
-          applications = JSON.parse(stored);
+          applications = mergeApplications(JSON.parse(stored), manualApplications);
           filteredData = [...applications];
+          return;
         } catch (e) {
-          applications = [];
-          filteredData = [];
+          applications = mergeApplications([], manualApplications);
+          filteredData = [...applications];
+          return;
         }
       }
+
+      applications = mergeApplications([], manualApplications);
+      filteredData = [...applications];
+      saveToStorage(applications);
     }
 
     function updateSyncStatus() {
@@ -536,7 +578,7 @@
           // distinct jobs can be applied to at the same company on the same day,
           // and doing so would undercount the real total.)
           const seen = new Set();
-          const synced = data.applications
+          const syncedFromOutlook = data.applications
             .filter(a => {
               const key = a.id != null ? String(a.id) : `${a.company}|${a.position}|${a.dateApplied}`;
               if (seen.has(key)) return false;
@@ -552,6 +594,8 @@
               notes: a.notes || ""
             }));
 
+          const synced = mergeApplications(syncedFromOutlook, manualApplications);
+
           saveToStorage(synced);
           applications = synced;
           filteredData = [...applications];
@@ -565,8 +609,15 @@
           btn.textContent = `✅ Synced! ${synced.length} applications`;
           showNotification(`Sync complete — ${synced.length} applications tracked${added > 0 ? `, ${added} new` : ""}.`);
         } else {
-          btn.textContent = "⚠️ No new applications found";
-          showNotification("No new application emails found.", "error");
+          applications = mergeApplications(applications, manualApplications);
+          filteredData = [...applications];
+          saveToStorage(applications);
+          renderTable();
+          updateStats();
+          createCharts();
+          updateSyncStatus();
+          btn.textContent = "⚠️ Outlook found none — manual entries kept";
+          showNotification("Outlook did not return applications, but your manual Morgan & Morgan offer was kept.", "error");
         }
       } catch (err) {
         btn.textContent = "❌ Sync failed — try again";
@@ -604,7 +655,7 @@
       tbody.innerHTML = "";
 
       if (!filteredData.length) {
-        tbody.innerHTML = `<tr><td colspan="5" class="empty-state">No applications yet — click Sync from Outlook to load your data.</td></tr>`;
+        tbody.innerHTML = `<tr><td colspan="4" class="empty-state">No applications yet — click Sync from Outlook to load your data.</td></tr>`;
         return;
       }
 
@@ -624,10 +675,11 @@
     }
 
     function updateStats() {
-      const total = applications.length;
-      const responded = applications.filter(a => a.status !== "applied" && a.status !== "pending").length;
-      const interviews = applications.filter(a => a.status === "interview").length;
-      const offers = applications.filter(a => a.status === "offer").length;
+      const normalizedApps = applications.map(a => ({ ...a, status: normalizeStatus(a.status) }));
+      const total = normalizedApps.length;
+      const responded = normalizedApps.filter(a => !["applied", "pending"].includes(a.status)).length;
+      const interviews = normalizedApps.filter(a => a.status === "interview").length;
+      const offers = normalizedApps.filter(a => a.status === "offer").length;
 
       document.getElementById("totalApps").textContent = total;
       document.getElementById("responseRate").textContent = total > 0 ? Math.round((responded / total) * 100) + "%" : "0%";
@@ -640,11 +692,11 @@
       charts = {};
 
       const counts = {
-        applied: applications.filter(a => a.status === "applied").length,
-        interview: applications.filter(a => a.status === "interview").length,
-        offer: applications.filter(a => a.status === "offer").length,
-        rejected: applications.filter(a => a.status === "rejected").length,
-        pending: applications.filter(a => a.status === "pending").length
+        applied: applications.filter(a => normalizeStatus(a.status) === "applied").length,
+        interview: applications.filter(a => normalizeStatus(a.status) === "interview").length,
+        offer: applications.filter(a => normalizeStatus(a.status) === "offer").length,
+        rejected: applications.filter(a => normalizeStatus(a.status) === "rejected").length,
+        pending: applications.filter(a => normalizeStatus(a.status) === "pending").length
       };
 
       charts.status = new Chart(document.getElementById("statusChart").getContext("2d"), {
@@ -720,7 +772,7 @@
   const lastSyncDate = lastSync ? new Date(lastSync) : null;
   const hoursSinceSync = lastSyncDate ? (now - lastSyncDate) / (1000 * 60 * 60) : 999;
 
-  if (hoursSinceSync > 0.5) {
+  if (hoursSinceSync > 24) {
     const syncBtn = document.getElementById("syncBtn");
     syncFromOutlook(syncBtn);
   }
