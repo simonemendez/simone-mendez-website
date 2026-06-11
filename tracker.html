@@ -524,13 +524,27 @@
         const data = await res.json();
 
         if (data.applications && data.applications.length > 0) {
-          const existing = JSON.parse(localStorage.getItem("jobApplications") || "[]");
-          const existingKeys = new Set(existing.map(a => `${a.company}|${a.position}`));
+          const previousCount = JSON.parse(localStorage.getItem("jobApplications") || "[]").length;
 
-          const newApps = data.applications
-            .filter(a => !existingKeys.has(`${a.company}|${a.position}`))
+          // The Outlook sync is the single source of truth for the tracker, so
+          // we rebuild the list from the latest scan instead of appending to it.
+          // This guarantees stale or mis-parsed entries are cleared out and the
+          // table always reflects what is currently in the inbox.
+          //
+          // De-duplicate on the email's own id so that each application email is
+          // counted exactly once. (We must NOT collapse on company+date — several
+          // distinct jobs can be applied to at the same company on the same day,
+          // and doing so would undercount the real total.)
+          const seen = new Set();
+          const synced = data.applications
+            .filter(a => {
+              const key = a.id != null ? String(a.id) : `${a.company}|${a.position}|${a.dateApplied}`;
+              if (seen.has(key)) return false;
+              seen.add(key);
+              return true;
+            })
             .map((a, i) => ({
-              id: existing.length + i + 1,
+              id: a.id != null ? a.id : i + 1,
               company: a.company,
               position: a.position,
               dateApplied: a.dateApplied,
@@ -538,9 +552,8 @@
               notes: a.notes || ""
             }));
 
-          const merged = [...existing, ...newApps];
-          saveToStorage(merged);
-          applications = merged;
+          saveToStorage(synced);
+          applications = synced;
           filteredData = [...applications];
 
           renderTable();
@@ -548,8 +561,9 @@
           createCharts();
           updateSyncStatus();
 
-          btn.textContent = `✅ Synced! ${newApps.length} new entries added`;
-          showNotification(`Sync complete — ${newApps.length} new applications added, ${existing.length} already tracked.`);
+          const added = Math.max(0, synced.length - previousCount);
+          btn.textContent = `✅ Synced! ${synced.length} applications`;
+          showNotification(`Sync complete — ${synced.length} applications tracked${added > 0 ? `, ${added} new` : ""}.`);
         } else {
           btn.textContent = "⚠️ No new applications found";
           showNotification("No new application emails found.", "error");
