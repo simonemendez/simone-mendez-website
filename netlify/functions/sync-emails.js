@@ -218,9 +218,9 @@ function deriveStatus(subject, fullText) {
     return "Rejected";
   }
 
-  if (/\b(pleased to offer|happy to offer|glad to offer|excited to offer|we would like to offer|offer of employment|job offer|offer letter|formal offer|extend(?:ing|ed)? (?:you )?(?:an|the)? ?offer|you have been hired|you're hired|welcome aboard|welcome to the team|onboarding|start date|employment agreement)\b/.test(text)) {
-    return "Offer";
-  }
+if (/\b(pleased to offer|happy to offer|glad to offer|excited to offer|we would like to offer|offer of employment|job offer|offer letter|formal offer|extend(?:ing|ed)? (?:you )?(?:an|the)? ?offer|you have been hired|you're hired|employment agreement)\b/.test(text)) {
+  return "Offer";
+}
 
   if (/\b(brief phone screening|phone screening|phone screen|screening call|recruiter screen|phone call|phone interview|video interview|virtual interview|interview|schedule|interview scheduled|next round|next step|time slot|calendar|zoom|teams|meet)\b/.test(text)) {
     return "Interview";
@@ -312,10 +312,13 @@ exports.handler = async () => {
 
     const searchUrl =
       `https://graph.microsoft.com/v1.0/me/messages?$search="${encodeURIComponent(query)}"` +
-      `&$top=100&$select=${select}`;
+      `&$top=100&$select=${select
+      const recentUrl =
+  `https://graph.microsoft.com/v1.0/me/messages?$top=200&$orderby=receivedDateTime desc&$select=${select}`;                   
 
     let linkedInMessages = [];
-    let searchMessages = [];
+let searchMessages = [];
+let recentMessages = [];
 
     try {
       linkedInMessages = await fetchAllMessages(linkedInUrl, accessToken, 3000);
@@ -328,7 +331,11 @@ exports.handler = async () => {
     } catch (e) {
       console.error("Search fetch error:", e);
     }
-
+try {
+  recentMessages = await fetchAllMessages(recentUrl, accessToken, 200);
+} catch (e) {
+  console.error("Recent fetch error:", e);
+}
     if (linkedInMessages.length === 0 && searchMessages.length === 0) {
       return {
         statusCode: 200,
@@ -346,7 +353,7 @@ exports.handler = async () => {
 
     const byId = new Map();
 
-    for (const message of [...linkedInMessages, ...searchMessages]) {
+    for (const message of [...linkedInMessages, ...searchMessages, ...recentMessages]) {
       if (message && message.id && !byId.has(message.id)) {
         byId.set(message.id, message);
       }
