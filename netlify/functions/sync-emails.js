@@ -212,11 +212,12 @@ async function fetchAllMessages(initialUrl, accessToken, max = 1000) {
 
   while (url && messages.length < max && pages < 20) {
     const res = await fetch(url, {
-      headers: {
-        Authorization: `Bearer ${accessToken}`,
-        "Content-Type": "application/json"
-      }
-    });
+  headers: {
+    Authorization: `Bearer ${accessToken}`,
+    "Content-Type": "application/json",
+    Prefer: 'outlook.body-content-type="text"'
+  }
+});
     const data = await res.json();
     if (!Array.isArray(data.value)) {
       if (messages.length === 0) throw new Error(data.error?.message || "Mail fetch failed");
@@ -236,7 +237,7 @@ exports.handler = async () => {
       return { statusCode: 401, body: JSON.stringify({ error: "Token refresh failed", detail: tokenData }) };
     }
     const accessToken = tokenData.access_token;
-    const select = "id,subject,from,receivedDateTime,bodyPreview";
+    const select = "id,subject,from,receivedDateTime,bodyPreview,body";
 
     const linkedInFilter = "from/emailAddress/address eq 'jobs-noreply@linkedin.com'";
     const linkedInUrl =
@@ -269,20 +270,26 @@ exports.handler = async () => {
       const sender = (email.from?.emailAddress?.address || "").toLowerCase();
       const preview = email.bodyPreview || "";
       const date = email.receivedDateTime?.split("T")[0] || "";
-      const haystack = `${subject}\n${preview}`.toLowerCase();
+const body = email.body?.content || "";
+const fullText = `${subject}\n${preview}\n${body}`;
+const haystack = fullText.toLowerCase();
 
-      const isLinkedIn = sender.includes("linkedin.com");
+const isLinkedIn = sender.includes("linkedin.com");
 
-      if (isLinkedIn) {
-        if (!haystack.includes("application was sent") && !haystack.includes("your application was sent to")) {
-          continue;
-        }
-      } else {
-        const isNoise = NOISE_SIGNALS.some(sig => haystack.includes(sig));
-        const isJob = JOB_SIGNALS.some(sig => haystack.includes(sig));
-        if (isNoise || !isJob) continue;
-      }
+if (isLinkedIn) {
+  if (
+    !haystack.includes("application was sent") &&
+    !haystack.includes("your application was sent to")
+  ) {
+    continue;
+  }
+} else {
+  const isNoise = NOISE_SIGNALS.some(sig => haystack.includes(sig));
+  const isJob = JOB_SIGNALS.some(sig => haystack.includes(sig));
+  if (isNoise || !isJob) continue;
+}
 
+let company = extractCompany(subject, fullText);
       let company = extractCompany(subject, preview);
 
       if (!company && !isLinkedIn) {
@@ -293,11 +300,15 @@ exports.handler = async () => {
         }
       }
 
-      if (!company) continue;
+      if (!company && isLinkedIn) {   company = "Unknown Company"; } else if (!company) {   continue; }
 
       const status = deriveStatus(subject, preview);
-      const position = extractPosition(subject, preview, isLinkedIn, company) || "—";
-
+      const position = extractPosition(subject, fullText, isLinkedIn, company) || "—";
+console.log({
+  company,
+  position,
+  subject
+});
       applications.push({
         id: email.id,
         company,
