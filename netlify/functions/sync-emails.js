@@ -290,7 +290,6 @@ if (isLinkedIn) {
 }
 
 let company = extractCompany(subject, fullText);
-      let company = extractCompany(subject, preview);
 
       if (!company && !isLinkedIn) {
         const domain = (sender.split("@")[1] || "");
