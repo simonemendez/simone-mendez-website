@@ -1,0 +1,2036 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Simone Mendez | PM Portfolio</title>
+  <meta name="description" content="Project and program management portfolio featuring project charters, RAID logs, Gantt timelines, risk registers, and executive status reporting samples." />
+  <meta name="author" content="Simone Mendez" />
+
+  <link rel="canonical" href="https://simone-mendez-portfolio.netlify.app/pm-portfolio.html" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Simone Mendez | PM Portfolio" />
+  <meta property="og:description" content="Project and program management portfolio featuring project charters, RAID logs, Gantt timelines, risk registers, and executive status reporting samples." />
+  <meta property="og:url" content="https://simone-mendez-portfolio.netlify.app/pm-portfolio.html" />
+  <meta property="og:site_name" content="Simone Mendez Portfolio" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Simone Mendez | PM Portfolio" />
+  <meta name="twitter:description" content="Project and program management portfolio featuring project charters, RAID logs, Gantt timelines, risk registers, and executive status reporting samples." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <style>
+    :root {
+      --bg-deep: #0a0e17;
+      --bg: #0f1420;
+      --bg-card: #151b2b;
+      --bg-card-hover: #1a2235;
+      --cyan: #00d4aa;
+      --cyan-dim: rgba(0, 212, 170, 0.15);
+      --blue: #3b82f6;
+      --blue-dim: rgba(59, 130, 246, 0.15);
+      --purple: #8b5cf6;
+      --purple-dim: rgba(139, 92, 246, 0.15);
+      --amber: #f59e0b;
+      --amber-dim: rgba(245, 158, 11, 0.15);
+      --red: #f87171;
+      --green: #4ade80;
+      --text: #e2e8f0;
+      --text-muted: #94a3b8;
+      --text-dim: #64748b;
+      --border: rgba(139, 92, 246, 0.15);
+      --white: #ffffff;
+      --gradient: linear-gradient(135deg, var(--purple), var(--blue));
+      --shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "DM Sans", sans-serif;
+      background: var(--bg-deep);
+      color: var(--text);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      background-image:
+        linear-gradient(rgba(139, 92, 246, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(139, 92, 246, 0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: rgba(10, 14, 23, 0.88);
+      backdrop-filter: blur(24px);
+      border-bottom: 1px solid rgba(139, 92, 246, 0.12);
+      padding: 0 2.5rem;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: color 0.25s;
+      position: relative;
+      padding-bottom: 4px;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 0;
+      height: 2px;
+      background: var(--gradient);
+      transition: all 0.3s;
+      transform: translateX(-50%);
+      border-radius: 2px;
+    }
+
+    .nav-links a.active,
+    .nav-links a:hover {
+      color: var(--purple);
+    }
+
+    .nav-links a.active::after {
+      width: 100%;
+    }
+
+    .nav-cta {
+      background: var(--gradient);
+      color: var(--white);
+      font-weight: 700;
+      font-size: 0.78rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 0.5rem 1.2rem;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: all 0.3s;
+      box-shadow: 0 2px 12px rgba(139, 92, 246, 0.25);
+    }
+
+    .nav-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(139, 92, 246, 0.3);
+    }
+
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      color: var(--text);
+      cursor: pointer;
+    }
+
+    .page-hero {
+      padding: 120px 5rem 60px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .page-hero::before {
+      content: "";
+      position: absolute;
+      top: -100px;
+      left: -100px;
+      width: 400px;
+      height: 400px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(139, 92, 246, 0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      border: 1px solid rgba(139, 92, 246, 0.2);
+      border-radius: 6px;
+      padding: 0.3rem 1rem;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--purple);
+      margin-bottom: 1.5rem;
+      background: rgba(139, 92, 246, 0.05);
+    }
+
+    .badge-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--purple);
+      animation: pulse 2s infinite;
+      box-shadow: 0 0 6px rgba(139, 92, 246, 0.4);
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        opacity: 0.4;
+        transform: scale(1);
+      }
+
+      50% {
+        opacity: 1;
+        transform: scale(1.4);
+      }
+    }
+
+    .page-hero h1 {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 0.5rem;
+    }
+
+    .page-hero p {
+      font-size: 1rem;
+      color: var(--text-muted);
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .samples-nav {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0 2rem;
+      margin-bottom: 3rem;
+      flex-wrap: wrap;
+      position: relative;
+      z-index: 1;
+    }
+
+    .sample-tab,
+    .raid-tab {
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--text-muted);
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.72rem;
+      font-weight: 500;
+      padding: 0.6rem 1.1rem;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.25s;
+    }
+
+    .sample-tab:hover,
+    .raid-tab:hover {
+      border-color: var(--purple);
+      color: var(--purple);
+    }
+
+    .sample-tab.active {
+      background: var(--purple);
+      color: var(--white);
+      border-color: var(--purple);
+      font-weight: 600;
+    }
+
+    .raid-tab.active {
+      background: var(--purple-dim);
+      color: var(--purple);
+      border-color: var(--purple);
+    }
+
+    .sample-section {
+      display: none;
+      padding: 0 5rem 4rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      animation: fadeIn 0.4s ease;
+      position: relative;
+      z-index: 1;
+    }
+
+    .sample-section.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .sample-header {
+      margin-bottom: 2rem;
+    }
+
+    .sample-header h2 {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 0.3rem;
+    }
+
+    .sample-header p {
+      color: var(--text-muted);
+      font-size: 0.88rem;
+    }
+
+    .sample-context {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.3rem;
+      margin-bottom: 2rem;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+
+    .sample-context strong {
+      color: var(--white);
+    }
+
+    .pm-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.8rem;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 1.2rem;
+    }
+
+    .pm-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: var(--gradient);
+    }
+
+    .pm-card h3 {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 1rem;
+    }
+
+    .pm-label {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.62rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--purple);
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+    }
+
+    .charter-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.2rem;
+    }
+
+    .charter-item {
+      background: var(--bg-card-hover);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.2rem;
+    }
+
+    .charter-item h5 {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 0.6rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .charter-item p,
+    .charter-item li {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .charter-item ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .charter-item li {
+      padding: 0.2rem 0;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.4rem;
+    }
+
+    .charter-item li::before {
+      content: "▸";
+      color: var(--purple);
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .charter-full {
+      grid-column: 1 / -1;
+    }
+
+    .milestone-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+      font-size: 0.78rem;
+    }
+
+    .milestone-row:last-child {
+      border-bottom: none;
+    }
+
+    .m-name {
+      color: var(--text);
+    }
+
+    .m-date {
+      color: var(--purple);
+      font-family: "JetBrains Mono", monospace;
+      font-weight: 500;
+      font-size: 0.72rem;
+      white-space: nowrap;
+    }
+
+    .m-owner {
+      color: var(--text-dim);
+      font-size: 0.72rem;
+      white-space: nowrap;
+    }
+
+    .budget-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 0.8rem;
+    }
+
+    .metric-box {
+      background: var(--bg-card-hover);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .metric-value {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+    }
+
+    .metric-label {
+      font-size: 0.65rem;
+      color: var(--text-dim);
+      margin-top: 0.2rem;
+    }
+
+    .risk-wrap,
+    .gantt-container {
+      overflow-x: auto;
+    }
+
+    .risk-table,
+    .gantt-chart {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      background: var(--bg-card);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+    }
+
+    .risk-table {
+      min-width: 950px;
+    }
+
+    .gantt-chart {
+      min-width: 980px;
+    }
+
+    .risk-table th,
+    .gantt-chart th {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-dim);
+      font-weight: 500;
+      padding: 0.8rem;
+      text-align: left;
+      background: var(--bg-card-hover);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .risk-table td {
+      font-size: 0.78rem;
+      padding: 0.7rem 0.8rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+      vertical-align: top;
+      color: var(--text-muted);
+    }
+
+    .risk-table td strong {
+      color: var(--white);
+    }
+
+    .risk-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .risk-table tr:hover td {
+      background: rgba(139, 92, 246, 0.03);
+    }
+
+    .sev-badge {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.65rem;
+      font-weight: 600;
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      display: inline-block;
+      white-space: nowrap;
+    }
+
+    .sev-badge.critical {
+      background: rgba(248, 113, 113, 0.12);
+      color: var(--red);
+    }
+
+    .sev-badge.high {
+      background: rgba(245, 158, 11, 0.12);
+      color: var(--amber);
+    }
+
+    .sev-badge.medium {
+      background: var(--blue-dim);
+      color: var(--blue);
+    }
+
+    .sev-badge.low {
+      background: rgba(74, 222, 128, 0.12);
+      color: var(--green);
+    }
+
+    .likelihood-bar {
+      width: 50px;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.06);
+      border-radius: 2px;
+      overflow: hidden;
+      display: inline-block;
+      vertical-align: middle;
+      margin-right: 0.3rem;
+    }
+
+    .likelihood-bar .fill {
+      display: block;
+      height: 100%;
+      border-radius: 2px;
+    }
+
+    .raid-tabs {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .raid-section {
+      display: none;
+    }
+
+    .raid-section.active {
+      display: block;
+    }
+
+    .raid-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1rem;
+      margin-bottom: 0.8rem;
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+
+    .raid-id {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.7rem;
+      color: var(--purple);
+      font-weight: 600;
+      min-width: 40px;
+    }
+
+    .raid-content {
+      flex: 1;
+    }
+
+    .raid-content strong {
+      color: var(--white);
+      font-size: 0.82rem;
+    }
+
+    .raid-content p {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-top: 0.3rem;
+    }
+
+    .raid-meta {
+      display: flex;
+      gap: 1rem;
+      margin-top: 0.4rem;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.65rem;
+      color: var(--text-dim);
+      flex-wrap: wrap;
+    }
+
+    .raid-status {
+      padding: 0.15rem 0.4rem;
+      border-radius: 3px;
+      font-weight: 500;
+    }
+
+    .raid-status.open {
+      background: rgba(245, 158, 11, 0.12);
+      color: var(--amber);
+    }
+
+    .raid-status.closed {
+      background: rgba(74, 222, 128, 0.12);
+      color: var(--green);
+    }
+
+    .raid-status.mitigated {
+      background: var(--blue-dim);
+      color: var(--blue);
+    }
+
+    .raid-status.pending {
+      background: var(--purple-dim);
+      color: var(--purple);
+    }
+
+    .gantt-chart th {
+      text-align: center;
+      padding: 0.6rem 0.3rem;
+      min-width: 50px;
+    }
+
+    .gantt-chart th:first-child {
+      text-align: left;
+      padding-left: 1rem;
+      min-width: 220px;
+    }
+
+    .gantt-chart td {
+      font-size: 0.75rem;
+      padding: 0.5rem 0.3rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+      position: relative;
+      height: 32px;
+    }
+
+    .gantt-chart td:first-child {
+      padding-left: 1rem;
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    .gantt-bar {
+      position: absolute;
+      top: 8px;
+      height: 16px;
+      border-radius: 3px;
+      min-width: 4px;
+    }
+
+    .phase-1 {
+      background: linear-gradient(90deg, var(--purple), rgba(139, 92, 246, 0.5));
+    }
+
+    .phase-2 {
+      background: linear-gradient(90deg, var(--blue), rgba(59, 130, 246, 0.5));
+    }
+
+    .phase-3 {
+      background: linear-gradient(90deg, var(--cyan), rgba(0, 212, 170, 0.5));
+    }
+
+    .phase-4 {
+      background: linear-gradient(90deg, var(--amber), rgba(245, 158, 11, 0.5));
+    }
+
+    .milestone {
+      width: 12px !important;
+      height: 12px;
+      top: 10px;
+      border-radius: 50%;
+      border: 2px solid var(--white);
+      background: var(--purple);
+    }
+
+    .gantt-legend {
+      display: flex;
+      gap: 1.5rem;
+      margin-top: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .gantt-legend-item {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.72rem;
+      color: var(--text-muted);
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 2px;
+    }
+
+    .status-header {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .status-kpi {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.2rem;
+      text-align: center;
+    }
+
+    .kpi-val {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+
+    .kpi-lbl {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.62rem;
+      color: var(--text-dim);
+      margin-top: 0.2rem;
+    }
+
+    .rag-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.7rem;
+      font-weight: 600;
+      padding: 0.3rem 0.7rem;
+      border-radius: 4px;
+    }
+
+    .rag-badge.amber {
+      background: var(--amber-dim);
+      color: var(--amber);
+    }
+
+    .rag-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .rag-dot.green {
+      background: var(--green);
+    }
+
+    .rag-dot.amber {
+      background: var(--amber);
+    }
+
+    .rag-dot.red {
+      background: var(--red);
+    }
+
+    .status-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.2rem;
+    }
+
+    .status-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.5rem;
+    }
+
+    .status-card h4 {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 0.8rem;
+    }
+
+    .status-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+      padding: 0.4rem 0;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .status-item strong {
+      color: var(--text);
+    }
+
+    .status-full {
+      grid-column: 1 / -1;
+    }
+
+    .progress-section {
+      margin-top: 0.8rem;
+    }
+
+    .progress-label {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      font-size: 0.8rem;
+    }
+
+    .progress-bar-outer {
+      width: 100%;
+      height: 6px;
+      background: rgba(255, 255, 255, 0.06);
+      border-radius: 3px;
+      overflow: hidden;
+      margin-top: 0.3rem;
+    }
+
+    .progress-bar-inner {
+      height: 100%;
+      border-radius: 3px;
+      transition: width 1s ease;
+    }
+
+    .chart-container {
+      position: relative;
+      height: 220px;
+      margin: 1rem 0;
+    }
+
+    footer {
+      text-align: center;
+      padding: 3rem 2rem;
+      border-top: 1px solid var(--border);
+      font-size: 0.78rem;
+      color: var(--text-dim);
+      position: relative;
+      z-index: 1;
+    }
+
+    footer a {
+      color: var(--purple);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      color: var(--blue);
+    }
+
+    @media (max-width: 900px) {
+      .nav-links {
+        gap: 1rem;
+      }
+
+      .budget-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        padding: 0 1.5rem;
+      }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 64px;
+        left: 0;
+        right: 0;
+        background: rgba(10, 14, 23, 0.98);
+        backdrop-filter: blur(20px);
+        flex-direction: column;
+        padding: 1.5rem;
+        border-bottom: 1px solid var(--border);
+        gap: 1rem;
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .nav-toggle {
+        display: block;
+      }
+
+      .nav-cta {
+        display: none;
+      }
+
+      .page-hero {
+        padding: 100px 1.5rem 40px;
+      }
+
+      .sample-section {
+        padding: 0 1.5rem 3rem;
+      }
+
+      .charter-grid,
+      .status-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .status-header {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .budget-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .milestone-row {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 0.2rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a class="nav-logo" href="index.html">SM://</a>
+
+    <button class="nav-toggle" type="button" aria-label="Toggle navigation" onclick="document.querySelector('.nav-links').classList.toggle('open')">
+      ☰
+    </button>
+
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="why-me.html">Why Me</a></li>
+      <li><a href="career-story.html">Career Story</a></li>
+      <li><a href="csm-portfolio.html">CSM Portfolio</a></li>
+      <li><a class="active" href="pm-portfolio.html">PM Portfolio</a></li>
+      <li><a href="tracker.html">Job Tracker</a></li>
+      <li><a href="resume-deck.html">Resume Deck</a></li>
+    </ul>
+
+    <a href="index.html#contact" class="nav-cta">Hire Me</a>
+  </nav>
+
+  <section class="page-hero">
+    <div class="hero-badge"><span class="badge-dot"></span> Program Management</div>
+    <h1>PM Portfolio</h1>
+    <p>Project governance frameworks, risk management, execution planning, and executive reporting samples built for enterprise-scale programs.</p>
+  </section>
+
+  <div class="samples-nav">
+    <button class="sample-tab active" type="button" onclick="showSample('charter', this)">Project Charter</button>
+    <button class="sample-tab" type="button" onclick="showSample('risk', this)">Risk Register</button>
+    <button class="sample-tab" type="button" onclick="showSample('raid', this)">RAID Log</button>
+    <button class="sample-tab" type="button" onclick="showSample('gantt', this)">Gantt / Timeline</button>
+    <button class="sample-tab" type="button" onclick="showSample('status', this)">Status Report</button>
+  </div>
+
+  <div class="sample-section active" id="sample-charter">
+    <div class="sample-header">
+      <h2>Project Charter — Enterprise Platform Migration</h2>
+      <p>A comprehensive project charter for a cross-functional enterprise initiative.</p>
+    </div>
+
+    <div class="sample-context">
+      <strong>Scenario:</strong> Project Phoenix, a fictional enterprise CRM migration for a Fortune 500 financial services company moving from a legacy on-premise CRM to a cloud-native SaaS platform. Scope includes a $4.2M budget, 18-month timeline, 3 business units, and 5,000 end users.
+    </div>
+
+    <div class="pm-card">
+      <div class="pm-label">Section 1 — Project Overview</div>
+      <h3>Project Phoenix: Enterprise CRM Migration</h3>
+
+      <div class="charter-grid">
+        <div class="charter-item">
+          <h5><span style="color: var(--purple);">◈</span> Business Case</h5>
+          <p>Legacy CRM costs $2.8M/year in maintenance with 67% user satisfaction. Cloud migration will reduce TCO by 40%, improve user satisfaction to 85%+, and enable AI-powered analytics unavailable on the legacy platform. ROI breakeven is projected at month 14.</p>
+        </div>
+
+        <div class="charter-item">
+          <h5><span style="color: var(--blue);">◈</span> Scope</h5>
+          <ul>
+            <li>Migrate 12M+ customer records across 3 business units</li>
+            <li>Integrate with 8 downstream systems including ERP, billing, and support</li>
+            <li>Configure workflow automation for SOX and GLBA compliance</li>
+            <li>Train 5,000 end users across 14 office locations</li>
+          </ul>
+        </div>
+
+        <div class="charter-item">
+          <h5><span style="color: var(--cyan);">◈</span> Success Criteria</h5>
+          <ul>
+            <li>100% data migration with zero data loss</li>
+            <li>85%+ user adoption within 90 days of go-live</li>
+            <li>Less than 2% increase in support tickets during transition</li>
+            <li>All compliance requirements maintained through cutover</li>
+          </ul>
+        </div>
+
+        <div class="charter-item">
+          <h5><span style="color: var(--amber);">◈</span> Constraints & Assumptions</h5>
+          <ul>
+            <li>No production downtime during peak business hours</li>
+            <li>Regulatory freeze window from Nov 15 to Jan 15</li>
+            <li>Vendor provides dedicated migration engineering team</li>
+            <li>15% budget contingency reserved for risk mitigation</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="pm-card">
+      <div class="pm-label">Section 2 — Governance & Stakeholders</div>
+      <h3>Project Organization</h3>
+
+      <div class="charter-grid">
+        <div class="charter-item">
+          <h5>Executive Sponsors</h5>
+          <ul>
+            <li>CTO — Final go/no-go authority</li>
+            <li>COO — Business readiness sign-off</li>
+            <li>CISO — Security and compliance approval</li>
+          </ul>
+        </div>
+
+        <div class="charter-item">
+          <h5>Steering Committee</h5>
+          <ul>
+            <li>VP Engineering — Technical delivery</li>
+            <li>VP Sales Operations — Sales BU readiness</li>
+            <li>VP Customer Service — Service BU readiness</li>
+            <li>Head of Compliance — Regulatory oversight</li>
+          </ul>
+        </div>
+
+        <div class="charter-item charter-full">
+          <h5>Key Milestones</h5>
+
+          <div class="milestone-row">
+            <span class="m-name">Project Kickoff & Team Onboarding</span>
+            <span class="m-date">Jan 15, 2026</span>
+            <span class="m-owner">PM</span>
+          </div>
+
+          <div class="milestone-row">
+            <span class="m-name">Discovery & Requirements Complete</span>
+            <span class="m-date">Mar 1, 2026</span>
+            <span class="m-owner">BA + Solutions Arch</span>
+          </div>
+
+          <div class="milestone-row">
+            <span class="m-name">Data Migration Test, Dry Run 1</span>
+            <span class="m-date">May 15, 2026</span>
+            <span class="m-owner">Data Eng</span>
+          </div>
+
+          <div class="milestone-row">
+            <span class="m-name">Integration Testing Complete</span>
+            <span class="m-date">Jul 30, 2026</span>
+            <span class="m-owner">QA Lead</span>
+          </div>
+
+          <div class="milestone-row">
+            <span class="m-name">UAT Sign-off, All 3 BUs</span>
+            <span class="m-date">Sep 15, 2026</span>
+            <span class="m-owner">BU Leads</span>
+          </div>
+
+          <div class="milestone-row">
+            <span class="m-name">Pilot Launch, Sales BU</span>
+            <span class="m-date">Oct 1, 2026</span>
+            <span class="m-owner">PM + Sales VP</span>
+          </div>
+
+          <div class="milestone-row">
+            <span class="m-name">Full Production Go-Live</span>
+            <span class="m-date">Nov 10, 2026</span>
+            <span class="m-owner">PM + CTO</span>
+          </div>
+
+          <div class="milestone-row">
+            <span class="m-name">Hypercare Complete & Handoff</span>
+            <span class="m-date">Jan 10, 2027</span>
+            <span class="m-owner">PM + Support</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="pm-card">
+      <div class="pm-label">Section 3 — Budget Summary</div>
+      <h3>Financial Overview</h3>
+
+      <div class="budget-grid">
+        <div class="metric-box">
+          <div class="metric-value" style="color: var(--purple);">$4.2M</div>
+          <div class="metric-label">Total Budget</div>
+        </div>
+
+        <div class="metric-box">
+          <div class="metric-value" style="color: var(--blue);">$1.8M</div>
+          <div class="metric-label">Platform License</div>
+        </div>
+
+        <div class="metric-box">
+          <div class="metric-value" style="color: var(--cyan);">$1.2M</div>
+          <div class="metric-label">Implementation</div>
+        </div>
+
+        <div class="metric-box">
+          <div class="metric-value" style="color: var(--amber);">$570K</div>
+          <div class="metric-label">Change Mgmt</div>
+        </div>
+
+        <div class="metric-box">
+          <div class="metric-value" style="color: var(--text-dim);">$630K</div>
+          <div class="metric-label">Contingency</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sample-section" id="sample-risk">
+    <div class="sample-header">
+      <h2>Risk Register — Enterprise Migration Program</h2>
+      <p>A structured risk register with severity scoring, likelihood assessment, and mitigation strategies.</p>
+    </div>
+
+    <div class="sample-context">
+      <strong>Framework:</strong> Risks are scored on a 5x5 matrix, Impact × Likelihood. Critical is 20+, High is 15–19, Medium is 10–14, and Low is below 10. Reviews are conducted bi-weekly with the Steering Committee.
+    </div>
+
+    <div class="risk-wrap">
+      <table class="risk-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Risk Description</th>
+            <th>Category</th>
+            <th>Impact</th>
+            <th>Likelihood</th>
+            <th>Severity</th>
+            <th>Mitigation Strategy</th>
+            <th>Owner</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td><strong>R-001</strong></td>
+            <td>Data migration causes record corruption or loss during transfer of 12M+ records.</td>
+            <td>Technical</td>
+            <td style="color: var(--red); font-weight: 600;">5</td>
+            <td><span class="likelihood-bar"><span class="fill" style="width: 60%; background: var(--amber);"></span></span>3</td>
+            <td><span class="sev-badge high">15 - High</span></td>
+            <td>Triple-validation checksums, 3 dry-run migrations, rollback scripts, and 2-week parallel run.</td>
+            <td>Data Eng Lead</td>
+            <td><span class="sev-badge medium">Active</span></td>
+          </tr>
+
+          <tr>
+            <td><strong>R-002</strong></td>
+            <td>Regulatory freeze window delays go-live if UAT slips.</td>
+            <td>Schedule</td>
+            <td style="color: var(--red); font-weight: 600;">5</td>
+            <td><span class="likelihood-bar"><span class="fill" style="width: 80%; background: var(--red);"></span></span>4</td>
+            <td><span class="sev-badge critical">20 - Critical</span></td>
+            <td>2-week schedule buffer, accelerated UAT track, and pre-approved exception process.</td>
+            <td>Program Manager</td>
+            <td><span class="sev-badge critical">Escalated</span></td>
+          </tr>
+
+          <tr>
+            <td><strong>R-003</strong></td>
+            <td>User adoption below 85% target due to change resistance.</td>
+            <td>People</td>
+            <td style="color: var(--amber); font-weight: 600;">4</td>
+            <td><span class="likelihood-bar"><span class="fill" style="width: 60%; background: var(--amber);"></span></span>3</td>
+            <td><span class="sev-badge medium">12 - Medium</span></td>
+            <td>Champion network, 6-week training program, gamified adoption tracking, and transition deadline.</td>
+            <td>Change Manager</td>
+            <td><span class="sev-badge medium">Active</span></td>
+          </tr>
+
+          <tr>
+            <td><strong>R-004</strong></td>
+            <td>Third-party API integration failures with legacy ERP system.</td>
+            <td>Technical</td>
+            <td style="color: var(--amber); font-weight: 600;">4</td>
+            <td><span class="likelihood-bar"><span class="fill" style="width: 80%; background: var(--red);"></span></span>4</td>
+            <td><span class="sev-badge high">16 - High</span></td>
+            <td>API compatibility testing, middleware abstraction layer, and batch transfer fallback.</td>
+            <td>Integration Arch</td>
+            <td><span class="sev-badge medium">Active</span></td>
+          </tr>
+
+          <tr>
+            <td><strong>R-005</strong></td>
+            <td>Budget overrun due to scope creep from BU-specific customization requests.</td>
+            <td>Financial</td>
+            <td style="color: var(--blue); font-weight: 600;">3</td>
+            <td><span class="likelihood-bar"><span class="fill" style="width: 80%; background: var(--red);"></span></span>4</td>
+            <td><span class="sev-badge medium">12 - Medium</span></td>
+            <td>Change request board, $25K approval threshold, bi-weekly scope review, and MoSCoW prioritization.</td>
+            <td>Program Manager</td>
+            <td><span class="sev-badge medium">Active</span></td>
+          </tr>
+
+          <tr>
+            <td><strong>R-006</strong></td>
+            <td>Key resource attrition due to competing project demands.</td>
+            <td>Resource</td>
+            <td style="color: var(--amber); font-weight: 600;">4</td>
+            <td><span class="likelihood-bar"><span class="fill" style="width: 40%; background: var(--blue);"></span></span>2</td>
+            <td><span class="sev-badge low">8 - Low</span></td>
+            <td>Cross-training, documented architecture decisions, and escalation path for resource conflicts.</td>
+            <td>Resource Mgr</td>
+            <td><span class="sev-badge low">Monitoring</span></td>
+          </tr>
+
+          <tr>
+            <td><strong>R-007</strong></td>
+            <td>CISO rejects security architecture during compliance review.</td>
+            <td>Compliance</td>
+            <td style="color: var(--red); font-weight: 600;">5</td>
+            <td><span class="likelihood-bar"><span class="fill" style="width: 40%; background: var(--blue);"></span></span>2</td>
+            <td><span class="sev-badge medium">10 - Medium</span></td>
+            <td>Early InfoSec engagement, pre-approved security architecture template, and SOC 2 review.</td>
+            <td>Security Lead</td>
+            <td><span class="sev-badge low">Monitoring</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="pm-card" style="margin-top: 1.5rem;">
+      <div class="pm-label">Risk Heatmap Summary</div>
+      <h3>Risk Distribution by Category</h3>
+      <div class="chart-container">
+        <canvas id="risk-chart"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <div class="sample-section" id="sample-raid">
+    <div class="sample-header">
+      <h2>RAID Log — Program Governance Tracker</h2>
+      <p>Risks, Assumptions, Issues, and Dependencies tracked across the full program lifecycle.</p>
+    </div>
+
+    <div class="sample-context">
+      <strong>Usage:</strong> Reviewed weekly at program standup. Items are escalated to the Steering Committee when severity exceeds threshold or when items remain unresolved past target date.
+    </div>
+
+    <div class="raid-tabs">
+      <button class="raid-tab active" type="button" onclick="showRaid('risks', this)">Risks</button>
+      <button class="raid-tab" type="button" onclick="showRaid('assumptions', this)">Assumptions</button>
+      <button class="raid-tab" type="button" onclick="showRaid('issues', this)">Issues</button>
+      <button class="raid-tab" type="button" onclick="showRaid('dependencies', this)">Dependencies</button>
+    </div>
+
+    <div class="raid-section active" id="raid-risks">
+      <div class="raid-item">
+        <div class="raid-id">R-001</div>
+        <div class="raid-content">
+          <strong>Data migration corruption during 12M record transfer</strong>
+          <p>Triple-validation checksums and 3 dry-run migrations planned. Rollback scripts pre-staged.</p>
+          <div class="raid-meta">
+            <span class="raid-status open">Open</span>
+            <span>Owner: Data Eng Lead</span>
+            <span>Due: May 15</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="raid-item">
+        <div class="raid-id">R-002</div>
+        <div class="raid-content">
+          <strong>Regulatory freeze window blocks November go-live</strong>
+          <p>2-week buffer added. Accelerated UAT track approved by Steering Committee.</p>
+          <div class="raid-meta">
+            <span class="raid-status open">Open</span>
+            <span>Owner: Program Manager</span>
+            <span>Due: Sep 1</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="raid-item">
+        <div class="raid-id">R-003</div>
+        <div class="raid-content">
+          <strong>User adoption below 85% target</strong>
+          <p>Champion network activated. Gamified adoption dashboard deployed.</p>
+          <div class="raid-meta">
+            <span class="raid-status mitigated">Mitigated</span>
+            <span>Owner: Change Manager</span>
+            <span>Due: Dec 15</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="raid-section" id="raid-assumptions">
+      <div class="raid-item">
+        <div class="raid-id">A-001</div>
+        <div class="raid-content">
+          <strong>Vendor will provide dedicated migration engineering team of 4 FTEs</strong>
+          <p>Confirmed in SOW. Penalty clause if resources are reduced below 3.</p>
+          <div class="raid-meta">
+            <span class="raid-status closed">Validated</span>
+            <span>Owner: Vendor Manager</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="raid-item">
+        <div class="raid-id">A-002</div>
+        <div class="raid-content">
+          <strong>Legacy system data is clean enough for automated migration</strong>
+          <p>Data quality audit scheduled for sprint 2. Manual cleansing budget reserved if needed.</p>
+          <div class="raid-meta">
+            <span class="raid-status open">Unvalidated</span>
+            <span>Owner: Data Eng Lead</span>
+            <span>Due: Mar 15</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="raid-item">
+        <div class="raid-id">A-003</div>
+        <div class="raid-content">
+          <strong>All 3 BUs will release subject matter experts for UAT</strong>
+          <p>Verbal agreement from BU leads. Written confirmation pending from Sales VP.</p>
+          <div class="raid-meta">
+            <span class="raid-status pending">Pending</span>
+            <span>Owner: Program Manager</span>
+            <span>Due: Jul 1</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="raid-section" id="raid-issues">
+      <div class="raid-item">
+        <div class="raid-id">I-001</div>
+        <div class="raid-content">
+          <strong>Legacy API documentation is incomplete</strong>
+          <p>3 of 8 integrations are undocumented. Reverse engineering in progress. Added 2 weeks to integration timeline.</p>
+          <div class="raid-meta">
+            <span class="raid-status open">Open</span>
+            <span>Owner: Integration Arch</span>
+            <span>Due: Mar 30</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="raid-item">
+        <div class="raid-id">I-002</div>
+        <div class="raid-content">
+          <strong>Sales BU requested 12 custom fields not in original requirements</strong>
+          <p>Change request submitted with $45K impact. Approved by Steering Committee.</p>
+          <div class="raid-meta">
+            <span class="raid-status closed">Resolved</span>
+            <span>Owner: Business Analyst</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="raid-item">
+        <div class="raid-id">I-003</div>
+        <div class="raid-content">
+          <strong>Vendor SSO connector does not support client MFA provider</strong>
+          <p>Workaround identified through custom SAML bridge. Native vendor support expected in Q3 release.</p>
+          <div class="raid-meta">
+            <span class="raid-status mitigated">Workaround</span>
+            <span>Owner: Security Lead</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="raid-section" id="raid-dependencies">
+      <div class="raid-item">
+        <div class="raid-id">D-001</div>
+        <div class="raid-content">
+          <strong>ERP team must complete API v3 upgrade before integration testing</strong>
+          <p>ERP upgrade scheduled for May 1. Integration testing blocked until complete.</p>
+          <div class="raid-meta">
+            <span class="raid-status open">Pending</span>
+            <span>Owner: ERP Program Mgr</span>
+            <span>Due: May 1</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="raid-item">
+        <div class="raid-id">D-002</div>
+        <div class="raid-content">
+          <strong>InfoSec must complete penetration testing before UAT</strong>
+          <p>Pen test scheduled for Aug 1–15. Results needed for compliance sign-off.</p>
+          <div class="raid-meta">
+            <span class="raid-status pending">Scheduled</span>
+            <span>Owner: Security Lead</span>
+            <span>Due: Aug 15</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="raid-item">
+        <div class="raid-id">D-003</div>
+        <div class="raid-content">
+          <strong>Change Advisory Board must approve production deployment</strong>
+          <p>CAB submission requires 3-week lead time. Target submission: Oct 10.</p>
+          <div class="raid-meta">
+            <span class="raid-status pending">Not Started</span>
+            <span>Owner: Release Manager</span>
+            <span>Due: Oct 10</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sample-section" id="sample-gantt">
+    <div class="sample-header">
+      <h2>Project Timeline — Gantt View</h2>
+      <p>An 18-month program timeline with phase dependencies, milestones, and critical path highlights.</p>
+    </div>
+
+    <div class="sample-context">
+      <strong>Scenario:</strong> Project Phoenix timeline spanning Jan 2026 – Mar 2027. Four phases: Discovery, Build, Test & Validate, and Deploy & Optimize. Critical path runs through data migration and integration testing.
+    </div>
+
+    <div class="gantt-container">
+      <table class="gantt-chart">
+        <thead>
+          <tr>
+            <th>Work Stream</th>
+            <th>Jan</th>
+            <th>Feb</th>
+            <th>Mar</th>
+            <th>Apr</th>
+            <th>May</th>
+            <th>Jun</th>
+            <th>Jul</th>
+            <th>Aug</th>
+            <th>Sep</th>
+            <th>Oct</th>
+            <th>Nov</th>
+            <th>Dec</th>
+            <th>Jan</th>
+            <th>Feb</th>
+            <th>Mar</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td><strong>Discovery & Planning</strong></td>
+            <td colspan="3"><div class="gantt-bar phase-1" style="left: 5%; width: 90%;"></div></td>
+            <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+          </tr>
+
+          <tr>
+            <td>Requirements Gathering</td>
+            <td colspan="2"><div class="gantt-bar phase-1" style="left: 10%; width: 85%;"></div></td>
+            <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+          </tr>
+
+          <tr>
+            <td>Architecture Design</td>
+            <td></td>
+            <td colspan="2"><div class="gantt-bar phase-1" style="left: 5%; width: 90%;"></div></td>
+            <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+          </tr>
+
+          <tr>
+            <td style="color: var(--purple);">◆ Requirements Sign-off</td>
+            <td></td><td></td>
+            <td><div class="gantt-bar milestone" style="left: 45%;"></div></td>
+            <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+          </tr>
+
+          <tr>
+            <td><strong>Build & Configure</strong></td>
+            <td></td><td></td><td></td>
+            <td colspan="4"><div class="gantt-bar phase-2" style="left: 5%; width: 90%;"></div></td>
+            <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+          </tr>
+
+          <tr>
+            <td>Platform Configuration</td>
+            <td></td><td></td><td></td>
+            <td colspan="3"><div class="gantt-bar phase-2" style="left: 5%; width: 90%;"></div></td>
+            <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+          </tr>
+
+          <tr>
+            <td>Data Migration Dev</td>
+            <td></td><td></td><td></td>
+            <td colspan="3"><div class="gantt-bar phase-2" style="left: 5%; width: 90%;"></div></td>
+            <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+          </tr>
+
+          <tr>
+            <td>Integration Development</td>
+            <td></td><td></td><td></td><td></td>
+            <td colspan="3"><div class="gantt-bar phase-2" style="left: 5%; width: 90%;"></div></td>
+            <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+          </tr>
+
+          <tr>
+            <td style="color: var(--blue);">◆ Migration Dry Run 1</td>
+            <td></td><td></td><td></td><td></td>
+            <td><div class="gantt-bar milestone" style="left: 45%; background: var(--blue);"></div></td>
+            <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+          </tr>
+
+          <tr>
+            <td><strong>Test & Validate</strong></td>
+            <td></td><td></td><td></td><td></td><td></td><td></td>
+            <td colspan="3"><div class="gantt-bar phase-3" style="left: 5%; width: 90%;"></div></td>
+            <td></td><td></td><td></td><td></td><td></td><td></td>
+          </tr>
+
+          <tr>
+            <td>Integration Testing</td>
+            <td></td><td></td><td></td><td></td><td></td><td></td>
+            <td colspan="2"><div class="gantt-bar phase-3" style="left: 5%; width: 90%;"></div></td>
+            <td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+          </tr>
+
+          <tr>
+            <td>User Acceptance Testing</td>
+            <td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+            <td colspan="2"><div class="gantt-bar phase-3" style="left: 20%; width: 75%;"></div></td>
+            <td></td><td></td><td></td><td></td><td></td><td></td>
+          </tr>
+
+          <tr>
+            <td style="color: var(--cyan);">◆ UAT Sign-off</td>
+            <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+            <td><div class="gantt-bar milestone" style="left: 45%; background: var(--cyan);"></div></td>
+            <td></td><td></td><td></td><td></td><td></td><td></td>
+          </tr>
+
+          <tr>
+            <td><strong>Deploy & Optimize</strong></td>
+            <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+            <td colspan="4"><div class="gantt-bar phase-4" style="left: 5%; width: 90%;"></div></td>
+            <td></td><td></td>
+          </tr>
+
+          <tr>
+            <td>Pilot Launch</td>
+            <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+            <td><div class="gantt-bar phase-4" style="left: 5%; width: 90%;"></div></td>
+            <td></td><td></td><td></td><td></td><td></td>
+          </tr>
+
+          <tr>
+            <td>Full Go-Live</td>
+            <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+            <td><div class="gantt-bar phase-4" style="left: 5%; width: 60%;"></div></td>
+            <td></td><td></td><td></td><td></td>
+          </tr>
+
+          <tr>
+            <td>Hypercare & Optimization</td>
+            <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+            <td colspan="3"><div class="gantt-bar phase-4" style="left: 25%; width: 70%;"></div></td>
+            <td></td><td></td>
+          </tr>
+
+          <tr>
+            <td style="color: var(--amber);">◆ Project Close-out</td>
+            <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+            <td></td>
+            <td><div class="gantt-bar milestone" style="left: 45%; background: var(--amber);"></div></td>
+            <td></td><td></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="gantt-legend">
+      <div class="gantt-legend-item"><div class="dot" style="background: var(--purple);"></div>Discovery & Planning</div>
+      <div class="gantt-legend-item"><div class="dot" style="background: var(--blue);"></div>Build & Configure</div>
+      <div class="gantt-legend-item"><div class="dot" style="background: var(--cyan);"></div>Test & Validate</div>
+      <div class="gantt-legend-item"><div class="dot" style="background: var(--amber);"></div>Deploy & Optimize</div>
+      <div class="gantt-legend-item"><div class="dot" style="background: var(--purple); border-radius: 50%;"></div>Milestone</div>
+    </div>
+  </div>
+
+  <div class="sample-section" id="sample-status">
+    <div class="sample-header">
+      <h2>Executive Status Report — Week 18</h2>
+      <p>A weekly executive status report for Steering Committee review.</p>
+    </div>
+
+    <div class="sample-context">
+      <strong>Reporting Period:</strong> April 28 – May 2, 2026 |
+      <strong>Phase:</strong> Build & Configure, Sprint 7 of 12 |
+      <strong>Overall Status:</strong>
+      <span class="rag-badge amber"><span class="rag-dot amber"></span> Amber</span>
+    </div>
+
+    <div class="status-header">
+      <div class="status-kpi">
+        <div class="kpi-val" style="color: var(--amber);">Amber</div>
+        <div class="kpi-lbl">Overall RAG</div>
+      </div>
+
+      <div class="status-kpi">
+        <div class="kpi-val" style="color: var(--green);">On Track</div>
+        <div class="kpi-lbl">Budget</div>
+      </div>
+
+      <div class="status-kpi">
+        <div class="kpi-val" style="color: var(--amber);">At Risk</div>
+        <div class="kpi-lbl">Schedule</div>
+      </div>
+
+      <div class="status-kpi">
+        <div class="kpi-val" style="color: var(--green);">On Track</div>
+        <div class="kpi-lbl">Quality</div>
+      </div>
+    </div>
+
+    <div class="status-grid">
+      <div class="status-card">
+        <h4>Accomplishments This Week</h4>
+
+        <div class="status-item">
+          <span class="rag-dot green" style="margin-top: 6px;"></span>
+          <div><strong>Data migration dry run #1 completed</strong> — 11.8M of 12.1M records migrated successfully, 97.5%. 312K records flagged for manual review.</div>
+        </div>
+
+        <div class="status-item">
+          <span class="rag-dot green" style="margin-top: 6px;"></span>
+          <div><strong>Billing integration deployed to staging</strong> — All 47 test cases passing. Performance within SLA.</div>
+        </div>
+
+        <div class="status-item">
+          <span class="rag-dot green" style="margin-top: 6px;"></span>
+          <div><strong>Champion network launched</strong> — 25 power users identified and enrolled. First training cohort begins next week.</div>
+        </div>
+
+        <div class="status-item">
+          <span class="rag-dot green" style="margin-top: 6px;"></span>
+          <div><strong>SOX compliance mapping 80% complete</strong> — 48 of 60 controls mapped to new platform.</div>
+        </div>
+      </div>
+
+      <div class="status-card">
+        <h4>Planned Next Week</h4>
+
+        <div class="status-item">
+          <span class="rag-dot amber" style="margin-top: 6px;"></span>
+          <div><strong>Resolve 312K flagged migration records</strong> — Data cleansing sprint. Target: reduce to under 5K by Friday.</div>
+        </div>
+
+        <div class="status-item">
+          <span class="rag-dot amber" style="margin-top: 6px;"></span>
+          <div><strong>Begin ERP integration development</strong> — Dependent on ERP team completing API v3 upgrade.</div>
+        </div>
+
+        <div class="status-item">
+          <span class="rag-dot green" style="margin-top: 6px;"></span>
+          <div><strong>Sprint 8 planning</strong> — Service BU workflows finalized. Design review Thursday.</div>
+        </div>
+
+        <div class="status-item">
+          <span class="rag-dot green" style="margin-top: 6px;"></span>
+          <div><strong>Security architecture review with CISO</strong> — Pre-read distributed. Meeting scheduled Wednesday.</div>
+        </div>
+      </div>
+
+      <div class="status-card">
+        <h4>Risks & Issues Requiring Attention</h4>
+
+        <div class="status-item">
+          <span class="rag-dot red" style="margin-top: 6px;"></span>
+          <div><strong>R-002 Escalated:</strong> ERP API upgrade delayed 2 weeks. If not resolved by May 15, integration testing shifts right, threatening November go-live.</div>
+        </div>
+
+        <div class="status-item">
+          <span class="rag-dot amber" style="margin-top: 6px;"></span>
+          <div><strong>I-004 Open:</strong> Testing environment still on shared infrastructure. Performance testing cannot begin until dedicated environment is provisioned.</div>
+        </div>
+
+        <div class="status-item">
+          <span class="rag-dot amber" style="margin-top: 6px;"></span>
+          <div><strong>New Risk:</strong> Vendor indicated custom reporting module may slip 2 weeks from Jun 30 to Jul 14.</div>
+        </div>
+      </div>
+
+      <div class="status-card">
+        <h4>Decisions Needed from Steering Committee</h4>
+
+        <div class="status-item">
+          <span style="color: var(--purple); font-weight: 700; margin-top: 4px;">1.</span>
+          <div><strong>Approve accelerated UAT timeline</strong> to maintain November go-live date despite 2-week ERP delay.</div>
+        </div>
+
+        <div class="status-item">
+          <span style="color: var(--purple); font-weight: 700; margin-top: 4px;">2.</span>
+          <div><strong>Approve $45K change request</strong> for 12 additional custom fields requested by Sales BU.</div>
+        </div>
+
+        <div class="status-item">
+          <span style="color: var(--purple); font-weight: 700; margin-top: 4px;">3.</span>
+          <div><strong>Confirm go/no-go criteria</strong> for pilot launch: 95%+ data validation, 0 P1 defects, audit passed, and 3 BU sign-offs.</div>
+        </div>
+      </div>
+
+      <div class="status-card status-full">
+        <h4>Program Progress</h4>
+
+        <div class="progress-section">
+          <div class="progress-label">
+            <span style="color: var(--text-muted);">Overall Completion</span>
+            <span style="color: var(--purple); font-family: 'JetBrains Mono', monospace; font-size: 0.75rem;">42% — Sprint 7/12</span>
+          </div>
+          <div class="progress-bar-outer">
+            <div class="progress-bar-inner" style="width: 42%; background: var(--gradient);"></div>
+          </div>
+        </div>
+
+        <div class="progress-section">
+          <div class="progress-label">
+            <span style="color: var(--text-muted);">Budget Consumed</span>
+            <span style="color: var(--green); font-family: 'JetBrains Mono', monospace; font-size: 0.75rem;">$1.68M / $4.2M — 40%</span>
+          </div>
+          <div class="progress-bar-outer">
+            <div class="progress-bar-inner" style="width: 40%; background: linear-gradient(90deg, var(--green), var(--cyan));"></div>
+          </div>
+        </div>
+
+        <div class="progress-section">
+          <div class="progress-label">
+            <span style="color: var(--text-muted);">Risks Mitigated</span>
+            <span style="color: var(--blue); font-family: 'JetBrains Mono', monospace; font-size: 0.75rem;">3 / 7 Active</span>
+          </div>
+          <div class="progress-bar-outer">
+            <div class="progress-bar-inner" style="width: 43%; background: linear-gradient(90deg, var(--blue), var(--purple));"></div>
+          </div>
+        </div>
+
+        <div class="progress-section">
+          <div class="progress-label">
+            <span style="color: var(--text-muted);">Issues Resolved</span>
+            <span style="color: var(--amber); font-family: 'JetBrains Mono', monospace; font-size: 0.75rem;">2 / 4 — 50%</span>
+          </div>
+          <div class="progress-bar-outer">
+            <div class="progress-bar-inner" style="width: 50%; background: linear-gradient(90deg, var(--amber), var(--red));"></div>
+          </div>
+        </div>
+
+        <div class="chart-container" style="margin-top: 1.5rem;">
+          <canvas id="burndown-chart"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>
+      © 2026 Simone Mendez ·
+      <a href="index.html">Back to Home</a> ·
+      <a href="csm-portfolio.html">View CSM Portfolio</a> ·
+      <a href="resume-deck.html">View Resume Deck</a> ·
+      <a href="https://www.linkedin.com/in/simonmendez" target="_blank" rel="noopener">LinkedIn</a> ·
+      <a href="mailto:simone.mendez1@outlook.com">simone.mendez1@outlook.com</a>
+    </p>
+  </footer>
+
+  <script>
+    let riskChartInitialized = false;
+    let statusChartInitialized = false;
+
+    function showSample(id, button) {
+      document.querySelectorAll(".sample-section").forEach(section => {
+        section.classList.remove("active");
+      });
+
+      document.querySelectorAll(".sample-tab").forEach(tab => {
+        tab.classList.remove("active");
+      });
+
+      document.getElementById("sample-" + id).classList.add("active");
+      button.classList.add("active");
+
+      if (id === "risk") {
+        initRiskChart();
+      }
+
+      if (id === "status") {
+        initStatusCharts();
+      }
+    }
+
+    function showRaid(type, button) {
+      document.querySelectorAll(".raid-section").forEach(section => {
+        section.classList.remove("active");
+      });
+
+      document.querySelectorAll(".raid-tab").forEach(tab => {
+        tab.classList.remove("active");
+      });
+
+      document.getElementById("raid-" + type).classList.add("active");
+      button.classList.add("active");
+    }
+
+    function initRiskChart() {
+      if (riskChartInitialized) return;
+
+      const ctx = document.getElementById("risk-chart");
+      if (!ctx) return;
+
+      riskChartInitialized = true;
+
+      new Chart(ctx, {
+        type: "bar",
+        data: {
+          labels: ["Technical", "Schedule", "People", "Financial", "Resource", "Compliance"],
+          datasets: [
+            {
+              label: "Risk Score",
+              data: [15, 20, 12, 12, 8, 10],
+              backgroundColor: function(context) {
+                const value = context.raw;
+                if (value >= 20) return "rgba(248, 113, 113, 0.4)";
+                if (value >= 15) return "rgba(245, 158, 11, 0.4)";
+                if (value >= 10) return "rgba(59, 130, 246, 0.3)";
+                return "rgba(74, 222, 128, 0.3)";
+              },
+              borderColor: function(context) {
+                const value = context.raw;
+                if (value >= 20) return "#f87171";
+                if (value >= 15) return "#f59e0b";
+                if (value >= 10) return "#3b82f6";
+                return "#4ade80";
+              },
+              borderWidth: 1,
+              borderRadius: 4
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              display: false
+            }
+          },
+          scales: {
+            y: {
+              beginAtZero: true,
+              max: 25,
+              grid: {
+                color: "rgba(255,255,255,0.04)"
+              },
+              ticks: {
+                color: "#64748b"
+              }
+            },
+            x: {
+              grid: {
+                display: false
+              },
+              ticks: {
+                color: "#94a3b8",
+                font: {
+                  size: 11
+                }
+              }
+            }
+          }
+        }
+      });
+    }
+
+    function initStatusCharts() {
+      if (statusChartInitialized) return;
+
+      const ctx = document.getElementById("burndown-chart");
+      if (!ctx) return;
+
+      statusChartInitialized = true;
+
+      new Chart(ctx, {
+        type: "line",
+        data: {
+          labels: ["Wk 1", "Wk 4", "Wk 8", "Wk 12", "Wk 16", "Wk 18", "Wk 24", "Wk 32", "Wk 40", "Wk 48"],
+          datasets: [
+            {
+              label: "Planned Progress",
+              data: [5, 15, 25, 35, 45, 50, 65, 80, 92, 100],
+              borderColor: "#8b5cf6",
+              borderDash: [5, 5],
+              pointBackgroundColor: "#8b5cf6",
+              fill: false,
+              tension: 0.3
+            },
+            {
+              label: "Actual Progress",
+              data: [4, 13, 22, 31, 40, 42, null, null, null, null],
+              borderColor: "#00d4aa",
+              backgroundColor: "rgba(0, 212, 170, 0.08)",
+              fill: true,
+              tension: 0.3,
+              pointBackgroundColor: "#00d4aa"
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              position: "bottom",
+              labels: {
+                color: "#94a3b8",
+                font: {
+                  family: "DM Sans",
+                  size: 11
+                }
+              }
+            }
+          },
+          scales: {
+            y: {
+              beginAtZero: true,
+              max: 100,
+              grid: {
+                color: "rgba(255,255,255,0.04)"
+              },
+              ticks: {
+                color: "#64748b",
+                callback: value => value + "%"
+              }
+            },
+            x: {
+              grid: {
+                display: false
+              },
+              ticks: {
+                color: "#64748b"
+              }
+            }
+          }
+        }
+      });
+    }
+  </script>
+</body>
+</html>

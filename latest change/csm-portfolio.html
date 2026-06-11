@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Simone Mendez | CSM Portfolio</title>
+
+  <style>
+    :root {
+      --bg: #020617;
+      --bg-2: #071426;
+      --card: rgba(15, 23, 42, 0.78);
+      --card-2: rgba(8, 18, 35, 0.92);
+      --line: rgba(148, 163, 184, 0.18);
+      --line-strong: rgba(34, 211, 238, 0.35);
+      --text: #f8fafc;
+      --muted: #94a3b8;
+      --muted-2: #cbd5e1;
+      --cyan: #22d3ee;
+      --blue: #3b82f6;
+      --amber: #f59e0b;
+      --green: #22c55e;
+      --red: #ef4444;
+      --shadow: 0 24px 80px rgba(0, 0, 0, 0.45);
+      --radius: 28px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 82% 8%, rgba(8, 145, 178, 0.22), transparent 28%),
+        radial-gradient(circle at 8% 60%, rgba(37, 99, 235, 0.16), transparent 34%),
+        linear-gradient(145deg, var(--bg), var(--bg-2) 48%, var(--bg));
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(30, 41, 59, 0.42) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(30, 41, 59, 0.42) 1px, transparent 1px);
+      background-size: 44px 44px;
+      opacity: 0.45;
+      mask-image: linear-gradient(to bottom, black, transparent 88%);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      width: min(1120px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 32px 0 80px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* NAV */
+    .nav {
+      position: sticky;
+      top: 24px;
+      z-index: 20;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 14px 20px;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: rgba(2, 6, 23, 0.78);
+      backdrop-filter: blur(18px);
+      box-shadow: var(--shadow);
+    }
+
+    .brand {
+      font-family: "Courier New", monospace;
+      font-weight: 800;
+      color: #67e8f9;
+      letter-spacing: 0.04em;
+      white-space: nowrap;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      color: var(--muted-2);
+      font-size: 0.92rem;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      transition: 0.2s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: #67e8f9;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 18px;
+      border-radius: 999px;
+      border: 1px solid rgba(34, 211, 238, 0.45);
+      background: linear-gradient(135deg, var(--cyan), var(--blue));
+      color: #020617;
+      font-weight: 800;
+      cursor: pointer;
+      box-shadow: 0 12px 40px rgba(34, 211, 238, 0.22);
+      white-space: nowrap;
+    }
+
+    /* HERO */
+    .hero {
+      margin-top: 72px;
+      padding: 58px 34px;
+      text-align: center;
+      border-radius: 34px;
+      border: 1px solid rgba(148, 163, 184, 0.12);
+      background: rgba(15, 23, 42, 0.45);
+      box-shadow: var(--shadow);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 18px;
+      border: 1px solid rgba(34, 211, 238, 0.38);
+      border-radius: 999px;
+      background: rgba(34, 211, 238, 0.11);
+      color: #67e8f9;
+      font-family: "Courier New", monospace;
+      font-size: 0.92rem;
+      margin-bottom: 28px;
+    }
+
+    .dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 999px;
+      background: var(--cyan);
+      box-shadow: 0 0 22px rgba(34, 211, 238, 0.9);
+    }
+
+    h1 {
+      font-size: clamp(2.8rem, 6vw, 5rem);
+      line-height: 0.95;
+      letter-spacing: -0.06em;
+      margin-bottom: 22px;
+    }
+
+    .hero p {
+      max-width: 760px;
+      margin: 0 auto;
+      color: var(--muted);
+      font-size: clamp(1.05rem, 2vw, 1.35rem);
+      line-height: 1.55;
+    }
+
+    /* TABS */
+    .tabs-wrap {
+      margin-top: 42px;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      background: rgba(2, 6, 23, 0.72);
+      box-shadow: var(--shadow);
+      overflow-x: auto;
+    }
+
+    .tabs {
+      display: flex;
+      gap: 10px;
+      min-width: max-content;
+    }
+
+    .tab {
+      border: 1px solid transparent;
+      border-radius: 999px;
+      padding: 13px 18px;
+      color: var(--muted-2);
+      background: transparent;
+      cursor: pointer;
+      font-weight: 700;
+      transition: 0.2s ease;
+    }
+
+    .tab:hover {
+      color: white;
+      border-color: rgba(148, 163, 184, 0.18);
+      background: rgba(148, 163, 184, 0.08);
+    }
+
+    .tab.active {
+      color: #020617;
+      background: linear-gradient(135deg, var(--cyan), var(--blue));
+      box-shadow: 0 12px 36px rgba(34, 211, 238, 0.22);
+    }
+
+    /* CONTENT */
+    .section {
+      margin-top: 58px;
+    }
+
+    .section-head {
+      margin-bottom: 26px;
+    }
+
+    .section-head h2 {
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      letter-spacing: -0.04em;
+      margin-bottom: 12px;
+    }
+
+    .section-head p {
+      color: var(--muted);
+      font-size: 1.08rem;
+      line-height: 1.6;
+      max-width: 900px;
+    }
+
+    .scenario {
+      padding: 28px;
+      border-radius: 24px;
+      background: var(--card-2);
+      border: 1px solid rgba(34, 211, 238, 0.24);
+      box-shadow: var(--shadow);
+      margin-bottom: 28px;
+    }
+
+    .scenario h3 {
+      margin-bottom: 10px;
+      font-size: 1.15rem;
+    }
+
+    .scenario p {
+      color: var(--muted-2);
+      line-height: 1.55;
+    }
+
+    .metric-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+      margin-bottom: 28px;
+    }
+
+    .metric-card,
+    .panel,
+    .mini-card {
+      border-radius: var(--radius);
+      background: var(--card);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+    }
+
+    .metric-card {
+      padding: 26px;
+      min-height: 150px;
+    }
+
+    .metric-label {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-bottom: 16px;
+    }
+
+    .metric-value {
+      font-size: 2.45rem;
+      line-height: 1;
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      margin-bottom: 12px;
+    }
+
+    .metric-change {
+      color: #67e8f9;
+      font-family: "Courier New", monospace;
+      font-size: 0.9rem;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+    }
+
+    .panel {
+      padding: 30px;
+      min-height: 360px;
+    }
+
+    .panel h3 {
+      margin-bottom: 22px;
+      font-size: 1.18rem;
+    }
+
+    .impact-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      margin-bottom: 24px;
+    }
+
+    .impact-box {
+      padding: 18px;
+      border-radius: 18px;
+      background: rgba(34, 211, 238, 0.09);
+      border: 1px solid rgba(34, 211, 238, 0.22);
+    }
+
+    .impact-box span {
+      display: block;
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin-bottom: 8px;
+    }
+
+    .impact-box strong {
+      font-size: 1.8rem;
+      letter-spacing: -0.04em;
+    }
+
+    .chart {
+      height: 145px;
+      border-radius: 20px;
+      border: 1px solid rgba(148, 163, 184, 0.13);
+      background: rgba(2, 6, 23, 0.5);
+      margin-bottom: 14px;
+      padding: 10px;
+    }
+
+    .caption {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .bar-row {
+      display: grid;
+      grid-template-columns: 150px 1fr 46px;
+      gap: 12px;
+      align-items: center;
+      margin: 18px 0;
+      color: var(--muted-2);
+      font-size: 0.92rem;
+    }
+
+    .bar-track {
+      height: 18px;
+      border-radius: 999px;
+      background: #1e293b;
+      overflow: hidden;
+    }
+
+    .bar-fill {
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(135deg, var(--cyan), var(--blue));
+    }
+
+    .bar-fill.warning {
+      background: linear-gradient(135deg, var(--amber), #f97316);
+    }
+
+    .mini-grid {
+      margin-top: 38px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .mini-card {
+      padding: 26px;
+      border-color: rgba(34, 211, 238, 0.24);
+      background: var(--card-2);
+    }
+
+    .mini-card h3 {
+      margin-bottom: 10px;
+    }
+
+    .mini-card p {
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .dynamic {
+      animation: fadeIn 0.25s ease;
+    }
+
+    .footer {
+      margin-top: 52px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(8px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 950px) {
+      .nav {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .nav-links {
+        flex-wrap: wrap;
+      }
+
+      .metric-grid,
+      .two-col,
+      .mini-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .bar-row {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="page">
+    <nav class="nav">
+      <div class="brand">SM://</div>
+
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="why-me.html">Why Me</a>
+        <a href="career-story.html">Career Story</a>
+        <a class="active" href="csm-portfolio.html">CSM Portfolio</a>
+        <a href="pm-portfolio.html">PM Portfolio</a>
+        <a href="tracker.html">Job Tracker</a>
+        <a href="resume-deck.html">Resume Deck</a>
+      </div>
+
+      <a class="btn" href="index.html#contact">Hire Me</a>
+    </nav>
+
+    <header class="hero">
+      <div class="eyebrow">
+        <span class="dot"></span>
+        <span>Customer Success</span>
+      </div>
+
+      <h1>CSM Portfolio</h1>
+
+      <p>
+        Interactive frameworks for enterprise customer success — QBRs, health scoring,
+        renewals, onboarding, success planning, executive business reviews, and stakeholder strategy.
+      </p>
+    </header>
+
+    <section class="tabs-wrap" aria-label="Portfolio tabs">
+      <div class="tabs">
+        <button class="tab active" data-tab="qbr">QBR Deck</button>
+        <button class="tab" data-tab="health">Health Tracker</button>
+        <button class="tab" data-tab="onboarding">Onboarding</button>
+        <button class="tab" data-tab="success">Success Plan</button>
+        <button class="tab" data-tab="ebr">Exec Review</button>
+        <button class="tab" data-tab="renewal">Renewal</button>
+        <button class="tab" data-tab="champion">Champion Map</button>
+      </div>
+    </section>
+
+    <section id="content" class="section dynamic">
+      <!-- JavaScript injects content here -->
+    </section>
+
+    <section class="mini-grid">
+      <article class="mini-card">
+        <h3>Health Tracker</h3>
+        <p>Segment enterprise accounts by healthy, at-risk, and critical indicators.</p>
+      </article>
+
+      <article class="mini-card">
+        <h3>90-Day Onboarding</h3>
+        <p>Discovery, configuration, enablement, adoption, and launch milestones.</p>
+      </article>
+
+      <article class="mini-card">
+        <h3>Champion Mapping</h3>
+        <p>Stakeholder influence, sentiment, executive alignment, and expansion strategy.</p>
+      </article>
+    </section>
+
+    <footer class="footer">
+      © 2026 Simone Mendez · CSM Portfolio
+    </footer>
+  </main>
+
+  <script>
+    const content = document.getElementById("content");
+    const tabs = document.querySelectorAll(".tab");
+
+    const tabContent = {
+      qbr: `
+        <div class="section-head">
+          <h2>Quarterly Business Review — Enterprise Template</h2>
+          <p>
+            A structured QBR framework designed for enterprise accounts with ARR, adoption,
+            health, SLA, customer sentiment, and ROI visibility.
+          </p>
+        </div>
+
+        <div class="scenario">
+          <h3>Scenario</h3>
+          <p>
+            Q1 2026 QBR for Meridian Logistics, a $1.2M ARR enterprise client focused on
+            retention, adoption maturity, operational efficiency, and expansion readiness.
+          </p>
+        </div>
+
+        <div class="metric-grid">
+          <article class="metric-card">
+            <div class="metric-label">Health Score</div>
+            <div class="metric-value">94</div>
+            <div class="metric-change">+3 vs Q4</div>
+          </article>
+
+          <article class="metric-card">
+            <div class="metric-label">Uptime SLA</div>
+            <div class="metric-value">98.7%</div>
+            <div class="metric-change">Above target</div>
+          </article>
+
+          <article class="metric-card">
+            <div class="metric-label">Current ARR</div>
+            <div class="metric-value">$1.2M</div>
+            <div class="metric-change">+$180K YoY</div>
+          </article>
+
+          <article class="metric-card">
+            <div class="metric-label">CSAT Score</div>
+            <div class="metric-value">4.6/5</div>
+            <div class="metric-change">+0.3 vs Q4</div>
+          </article>
+        </div>
+
+        <div class="two-col">
+          <article class="panel">
+            <h3>ROI & Business Impact</h3>
+
+            <div class="impact-grid">
+              <div class="impact-box">
+                <span>Cost Savings</span>
+                <strong>$2.4M</strong>
+              </div>
+
+              <div class="impact-box">
+                <span>Route Optimization</span>
+                <strong>34%</strong>
+              </div>
+            </div>
+
+            <div class="chart">
+              <svg width="100%" height="100%" viewBox="0 0 460 135" preserveAspectRatio="none">
+                <polyline
+                  points="18,112 82,90 146,78 210,50 274,35 338,22 430,10"
+                  fill="none"
+                  stroke="#22d3ee"
+                  stroke-width="5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <g fill="#22d3ee">
+                  <circle cx="18" cy="112" r="5" />
+                  <circle cx="82" cy="90" r="5" />
+                  <circle cx="146" cy="78" r="5" />
+                  <circle cx="210" cy="50" r="5" />
+                  <circle cx="274" cy="35" r="5" />
+                  <circle cx="338" cy="22" r="5" />
+                  <circle cx="430" cy="10" r="5" />
+                </g>
+              </svg>
+            </div>
+
+            <p class="caption">Cost savings trending upward quarter-over-quarter.</p>
+          </article>
+
+          <article class="panel">
+            <h3>Feature Adoption</h3>
+
+            ${bar("Route Optimization", 92)}
+            ${bar("Fleet Tracking", 88)}
+            ${bar("Driver Safety", 79)}
+            ${bar("Analytics Suite", 23, true)}
+            ${bar("API Integrations", 65)}
+            ${bar("Mobile App", 71)}
+          </article>
+        </div>
+      `,
+
+      health: `
+        <div class="section-head">
+          <h2>Customer Health Tracker</h2>
+          <p>
+            A portfolio-level health model for monitoring retention risk, adoption maturity,
+            executive engagement, support trends, and expansion potential.
+          </p>
+        </div>
+
+        <div class="scenario">
+          <h3>Portfolio Snapshot</h3>
+          <p>
+            Managed portfolio visibility across $18.4M total ARR with 94% gross retention.
+            Accounts are scored using adoption, product usage, ticket volume, sentiment,
+            stakeholder coverage, renewal timing, and business outcome alignment.
+          </p>
+        </div>
+
+        <div class="metric-grid">
+          <article class="metric-card">
+            <div class="metric-label">Total ARR Managed</div>
+            <div class="metric-value">$18.4M</div>
+            <div class="metric-change">Enterprise portfolio</div>
+          </article>
+          <article class="metric-card">
+            <div class="metric-label">Gross Retention</div>
+            <div class="metric-value">94%</div>
+            <div class="metric-change">Healthy baseline</div>
+          </article>
+          <article class="metric-card">
+            <div class="metric-label">At-Risk ARR</div>
+            <div class="metric-value">$1.1M</div>
+            <div class="metric-change">Action plan active</div>
+          </article>
+          <article class="metric-card">
+            <div class="metric-label">Expansion Pipeline</div>
+            <div class="metric-value">$740K</div>
+            <div class="metric-change">Next 2 quarters</div>
+          </article>
+        </div>
+      `,
+
+      onboarding: `
+        <div class="section-head">
+          <h2>90-Day Enterprise Onboarding Playbook</h2>
+          <p>
+            A phased onboarding model to move customers from kickoff to measurable adoption,
+            with clear ownership, success criteria, training, and launch milestones.
+          </p>
+        </div>
+
+        <div class="scenario">
+          <h3>Phases</h3>
+          <p>
+            Days 1–30: discovery, stakeholder alignment, system requirements, and success criteria.
+            Days 31–60: configuration, integrations, enablement, and pilot validation.
+            Days 61–90: launch, adoption tracking, executive readout, and optimization backlog.
+          </p>
+        </div>
+
+        <div class="metric-grid">
+          <article class="metric-card">
+            <div class="metric-label">Target Adoption</div>
+            <div class="metric-value">80%</div>
+            <div class="metric-change">By day 90</div>
+          </article>
+          <article class="metric-card">
+            <div class="metric-label">Training Completion</div>
+            <div class="metric-value">95%</div>
+            <div class="metric-change">Role-based enablement</div>
+          </article>
+          <article class="metric-card">
+            <div class="metric-label">Time to Value</div>
+            <div class="metric-value">45d</div>
+            <div class="metric-change">First milestone</div>
+          </article>
+          <article class="metric-card">
+            <div class="metric-label">Launch Readiness</div>
+            <div class="metric-value">100%</div>
+            <div class="metric-change">Checklist driven</div>
+          </article>
+        </div>
+      `,
+
+      success: `
+        <div class="section-head">
+          <h2>Customer Success Plan</h2>
+          <p>
+            A strategic plan that translates customer goals into measurable outcomes,
+            adoption targets, stakeholder accountability, risks, and executive checkpoints.
+          </p>
+        </div>
+
+        <div class="scenario">
+          <h3>Plan Objective</h3>
+          <p>
+            Establish an 80% adoption target, reduce manual workflows, improve reporting accuracy,
+            and align platform usage to executive-level business goals.
+          </p>
+        </div>
+
+        <div class="metric-grid">
+          <article class="metric-card">
+            <div class="metric-label">Adoption Goal</div>
+            <div class="metric-value">80%</div>
+            <div class="metric-change">Core user group</div>
+          </article>
+          <article class="metric-card">
+            <div class="metric-label">Workflow Reduction</div>
+            <div class="metric-value">35%</div>
+            <div class="metric-change">Manual steps removed</div>
+          </article>
+          <article class="metric-card">
+            <div class="metric-label">Executive Reviews</div>
+            <div class="metric-value">4</div>
+            <div class="metric-change">Quarterly cadence</div>
+          </article>
+          <article class="metric-card">
+            <div class="metric-label">Risk Items</div>
+            <div class="metric-value">3</div>
+            <div class="metric-change">Tracked weekly</div>
+          </article>
+        </div>
+      `,
+
+      ebr: `
+        <div class="section-head">
+          <h2>Executive Business Review Framework</h2>
+          <p>
+            A leadership-ready review structure connecting platform outcomes to revenue,
+            productivity, compliance, operational savings, and future-state roadmap alignment.
+          </p>
+        </div>
+
+        <div class="scenario">
+          <h3>Executive Value Story</h3>
+          <p>
+            The EBR highlights $8.2M in value realized and a 341% ROI through automation,
+            process improvement, risk reduction, and adoption-led operational gains.
+          </p>
+        </div>
+
+        <div class="metric-grid">
+          <article class="metric-card">
+            <div class="metric-label">Value Realized</div>
+            <div class="metric-value">$8.2M</div>
+            <div class="metric-change">Annualized</div>
+          </article>
+          <article class="metric-card">
+            <div class="metric-label">ROI</div>
+            <div class="metric-value">341%</div>
+            <div class="metric-change">Exec-ready metric</div>
+          </article>
+          <article class="metric-card">
+            <div class="metric-label">Productivity Gain</div>
+            <div class="metric-value">42%</div>
+            <div class="metric-change">Workflow efficiency</div>
+          </article>
+          <article class="metric-card">
+            <div class="metric-label">Roadmap Items</div>
+            <div class="metric-value">7</div>
+            <div class="metric-change">Prioritized with sponsor</div>
+          </article>
+        </div>
+      `,
+
+      renewal: `
+        <div class="section-head">
+          <h2>Renewal Playbook</h2>
+          <p>
+            A renewal management framework that starts early, identifies risk signals,
+            validates value, expands stakeholder alignment, and drives predictable retention.
+          </p>
+        </div>
+
+        <div class="scenario">
+          <h3>Renewal Motion</h3>
+          <p>
+            180 days out: health review and risk scan. 120 days out: value confirmation.
+            90 days out: executive alignment. 60 days out: commercial strategy.
+            30 days out: final approvals and close plan.
+          </p>
+        </div>
+
+        <div class="metric-grid">
+          <article class="metric-card">
+            <div class="metric-label">Renewal Timeline</div>
+            <div class="metric-value">180d</div>
+            <div class="metric-change">Early engagement</div>
+          </article>
+          <article class="metric-card">
+            <div class="metric-label">Save Plan SLA</div>
+            <div class="metric-value">48h</div>
+            <div class="metric-change">For risk escalation</div>
+          </article>
+          <article class="metric-card">
+            <div class="metric-label">Target GRR</div>
+            <div class="metric-value">95%</div>
+            <div class="metric-change">Portfolio goal</div>
+          </article>
+          <article class="metric-card">
+            <div class="metric-label">Expansion Review</div>
+            <div class="metric-value">QBR</div>
+            <div class="metric-change">Value-based motion</div>
+          </article>
+        </div>
+      `,
+
+      champion: `
+        <div class="section-head">
+          <h2>Champion Map & Stakeholder Matrix</h2>
+          <p>
+            A stakeholder strategy model for understanding influence, sentiment, decision power,
+            adoption ownership, blockers, and executive sponsorship.
+          </p>
+        </div>
+
+        <div class="scenario">
+          <h3>Stakeholder Strategy</h3>
+          <p>
+            Maps champions, economic buyers, technical owners, daily users, blockers, and executive
+            sponsors so the CSM can protect renewal momentum and identify expansion pathways.
+          </p>
+        </div>
+
+        <div class="metric-grid">
+          <article class="metric-card">
+            <div class="metric-label">Executive Sponsors</div>
+            <div class="metric-value">2</div>
+            <div class="metric-change">High influence</div>
+          </article>
+          <article class="metric-card">
+            <div class="metric-label">Active Champions</div>
+            <div class="metric-value">5</div>
+            <div class="metric-change">Multi-threaded</div>
+          </article>
+          <article class="metric-card">
+            <div class="metric-label">Potential Blockers</div>
+            <div class="metric-value">2</div>
+            <div class="metric-change">Mitigation active</div>
+          </article>
+          <article class="metric-card">
+            <div class="metric-label">Expansion Advocates</div>
+            <div class="metric-value">3</div>
+            <div class="metric-change">Pipeline support</div>
+          </article>
+        </div>
+      `
+    };
+
+    function bar(label, value, warning = false) {
+      return `
+        <div class="bar-row">
+          <span>${label}</span>
+          <div class="bar-track">
+            <div class="bar-fill ${warning ? "warning" : ""}" style="width:${value}%"></div>
+          </div>
+          <strong>${value}%</strong>
+        </div>
+      `;
+    }
+
+    function render(tabName) {
+      content.classList.remove("dynamic");
+      void content.offsetWidth;
+      content.innerHTML = tabContent[tabName];
+      content.classList.add("dynamic");
+    }
+
+    tabs.forEach((tab) => {
+      tab.addEventListener("click", () => {
+        tabs.forEach((button) => button.classList.remove("active"));
+        tab.classList.add("active");
+        render(tab.dataset.tab);
+      });
+    });
+
+    render("qbr");
+  </script>
+</body>
+</html>
