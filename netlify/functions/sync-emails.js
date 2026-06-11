@@ -218,7 +218,7 @@ function deriveStatus(subject, fullText) {
     return "Rejected";
   }
 
-  if (/\b(pleased to offer|happy to offer|glad to offer|excited to offer|we would like to offer|offer of employment|job offer|offer letter|formal offer|extend(?:ing|ed)? (?:you )?(?:an|the)? ?offer|you have been hired|you're hired|welcome aboard|welcome to the team|onboarding|start date|joining us|pleased to announce|excited to welcome|congrats|congratulations|employment agreement)\b/.test(text)) {
+  if (/\b(pleased to offer|happy to offer|glad to offer|excited to offer|we would like to offer|offer of employment|job offer|offer letter|formal offer|extend(?:ing|ed)? (?:you )?(?:an|the)? ?offer|you have been hired|you're hired|welcome aboard|welcome to the team|onboarding|start date|employment agreement)\b/.test(text)) {
     return "Offer";
   }
 
